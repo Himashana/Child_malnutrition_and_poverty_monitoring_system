@@ -19,3 +19,14 @@ body{
 .menu-item-active{
     background-color:#5066F0;
 }
+
+.loginBox{
+    background-color:white; 
+    padding:10px; 
+    width:60%; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

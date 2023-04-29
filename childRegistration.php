@@ -1,5 +1,6 @@
 <?php
     include('./site.Master.php'); // Including the site master page.
+    checkLoginStatus();
     createProperties($filePathPrefix = "./", $pageTitle = "Child Registration");
     menuSetActive(1);
 ?>

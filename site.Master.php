@@ -1,7 +1,15 @@
 <?php
+    session_start();
+
     $GLOBALS['filePathPrefix'] = "";
     $GLOBALS['pageTitle'] = "";
     $GLOBALS['menuItem'] = 0;
+
+    function checkLoginStatus(){
+        if(!$_SESSION['username']){
+            header("Location:login");
+        }
+    }
 
     function createProperties($filePathPrefix, $pageTitle = ""){ // i.e.: ../ and ./ etc...
         $GLOBALS['filePathPrefix'] = $filePathPrefix;
