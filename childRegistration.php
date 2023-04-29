@@ -8,11 +8,11 @@
 
 <div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
 <center>
-    <form action="registerChild.php" method="POST" style="overflow-y:auto; height:90vh">
+    <form action="registerChild.php" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Child registration form</h2><br>
 
-    <u><h4>Personal details</h4></u>
     <table>
+        <tr><td colspan="2"><center><u><h4>Personal details</h4></u></center></td></tr>
         <tr>
             <td>CHDR No:&nbsp;</td>
             <td><input type="text" name="CHDRNo" id="CHDRNo" placeholder="Enter CHDR No" class="form-control"></td>
@@ -41,10 +41,8 @@
             <td>Address:&nbsp;</td>
             <td><textarea name="childAddress" id="childAddress" placeholder="Enter address - city/lane/..." class="form-control" rows="3"></textarea></td>
         </tr><tr><td><br></td></tr>
-    </table>
-
-    <u><h4>Bio details</h4></u>
-    <table>
+    
+        <tr><td colspan="2"><center><u><h4>Bio details</h4></u></center></td></tr>
         <tr>
             <td>Date of the birth:&nbsp;</td>
             <td><input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dd/mm/yyyy" class="form-control"></td>
@@ -84,10 +82,8 @@
                 <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="isAnyDisease" name="isAnyDisease"></div>
             </td>
         </tr><tr><td><br></td></tr>
-    </table>
-
-    <u><h4>Other details</h4></u>
-    <table>
+    
+        <tr><td colspan="2"><center><u><h4>Other details</h4></u></center></td></tr>
         <tr>
             <td>Eligible family number:&nbsp;</td>
             <td><input type="text" name="eligibleFamilyNo" id="eligibleFamilyNo" placeholder="Enter eligible family number" class="form-control"></td>

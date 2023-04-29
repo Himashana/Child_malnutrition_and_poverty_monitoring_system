@@ -49,7 +49,7 @@
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 2) ? 'menu-item-active' : ''; ?>">Malnutrition monitoring</div>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 3) ? 'menu-item-active' : ''; ?>">Child follow -ups</div>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 4) ? 'menu-item-active' : ''; ?>">Supplement inventory</div>
-            <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 5) ? 'menu-item-active' : ''; ?>">Reports</div>
+            <a href="<?php echo $GLOBALS['filePathPrefix']; ?>newReport.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 5) ? 'menu-item-active' : ''; ?>">Reports</div></a>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 6) ? 'menu-item-active' : ''; ?>">Circulars and manuals</div>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 7) ? 'menu-item-active' : ''; ?>">Profile</div>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 8) ? 'menu-item-active' : ''; ?>">Log out</div>

@@ -204,7 +204,7 @@
     </table>
 
     <input type="submit" value="Cancel" class="btn btn-danger">&nbsp;&nbsp;
-    <input type="submit" value="Save" onclick="saveBtn_OnClick();" class="btn btn-primary">
+    <input type="submit" value="Save session" onclick="saveBtn_OnClick();" class="btn btn-primary">
 
     </form>
 </center>
