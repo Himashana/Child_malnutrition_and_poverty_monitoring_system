@@ -1,0 +1,21 @@
+body{
+    background-color:#DDDDDD;
+}
+
+.menu{
+    background-color:#292A25;
+    height:100vh;
+}
+
+.menu-item{
+    background-color:#292A25;
+    color:white;
+    width:215px;
+    text-align: center;
+    padding:20px;
+    text-transform: uppercase;
+}
+
+.menu-item-active{
+    background-color:#5066F0;
+}
