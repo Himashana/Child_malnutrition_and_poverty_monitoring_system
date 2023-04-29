@@ -1,6 +1,7 @@
 <?php
     include('./site.Master.php'); // Including the site master page.
     createProperties($filePathPrefix = "./", $pageTitle = "Home");
+    menuSetActive(0);
 ?>
 
 <?php initializePage(); ?>
