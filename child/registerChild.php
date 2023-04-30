@@ -18,9 +18,7 @@
 
     if($result){
         header("Location:viewChilds.php?alert=success");
-        // echo 'The child was registered successfully.';
     }else{
         header("Location:viewChilds.php?alert=unsuccess");
-        // echo 'Error: Undefined!';
     }
 ?>

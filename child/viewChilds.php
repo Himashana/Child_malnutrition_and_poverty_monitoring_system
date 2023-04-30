@@ -25,7 +25,46 @@
     <h3 class="panel-title"><a href="childRegistration.php"><button class="btn btn-primary">Add child</button></a></h3>
   </div>
   <div class="panel-body">
-    Panel content
+
+  <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Child registration No</th>
+          <th scope="col">Child full name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Age</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+
+  <?php
+    include('./Child.php');
+
+    $child = new Child();
+
+    $childs = $child->GetChilds();
+
+    if(!empty($childs)){
+      foreach ($childs as $c){
+        ?>
+          <tr>
+            <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
+            <td><?php echo $c[2] . " " . $c[3]; ?></td>
+            <td><?php echo $c[9]; ?></td>
+            <td><?php echo date("Y") - intval(substr($c[8], 6)); ?></td>
+            <td><a href="viewChild.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View profile</button></a></td>
+          </tr>
+        <?php
+      }
+    }else{
+        echo "No details found.";
+    }
+  ?>
+
+    </tbody>
+</table>
+
   </div>
 </div>
 
