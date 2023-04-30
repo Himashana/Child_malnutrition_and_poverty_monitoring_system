@@ -1,7 +1,7 @@
 <?php
-    include('./site.Master.php'); // Including the site master page.
+    include('../site.Master.php'); // Including the site master page.
     checkLoginStatus();
-    createProperties($filePathPrefix = "./", $pageTitle = "Child Registration");
+    createProperties($filePathPrefix = "../", $pageTitle = "Child Registration");
     menuSetActive(1);
 ?>
 
@@ -9,7 +9,7 @@
 
 <div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
 <center>
-    <form action="registerChild.php" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
+    <form action="registerChild.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Child registration form</h2><br>
 
     <table>
@@ -80,7 +80,7 @@
         <tr>
             <td>No any diseases / complications:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="isAnyDisease" name="isAnyDisease"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="isAnyDisease" name="isAnyDisease"></div>
             </td>
         </tr><tr><td><br></td></tr>
     
@@ -102,7 +102,7 @@
     </table>
 
     <input type="submit" value="Cancel" class="btn btn-danger">&nbsp;&nbsp;
-    <input type="submit" value="Save" class="btn btn-primary">
+    <input type="submit" value="Save" onclick="saveBtn_OnClick();" class="btn btn-primary">
 
     </form>
 </center>
@@ -119,6 +119,12 @@
             maxDate: "today"
         });
     });
+</script>
+
+<script>
+    function saveBtn_OnClick(){
+        document.getElementById("form").submit();
+    }
 </script>
 
 <?php closePage(); ?>

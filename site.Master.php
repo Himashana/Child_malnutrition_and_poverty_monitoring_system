@@ -49,11 +49,10 @@
     <script src="<?php echo $GLOBALS['filePathPrefix']; ?>bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
     <div class="row">
         <div class="col-md-2 menu">
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>index.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 0) ? 'menu-item-active' : ''; ?>">Home</div></a>
-            <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 1) ? 'menu-item-active' : ''; ?>">Child registration</div>
+            <a href="<?php echo $GLOBALS['filePathPrefix']; ?>child/viewChilds.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 1) ? 'menu-item-active' : ''; ?>">Child registration</div></a>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 2) ? 'menu-item-active' : ''; ?>">Malnutrition monitoring</div>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 3) ? 'menu-item-active' : ''; ?>">Child follow -ups</div>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 4) ? 'menu-item-active' : ''; ?>">Supplement inventory</div>
