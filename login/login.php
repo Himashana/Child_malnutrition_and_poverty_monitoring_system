@@ -12,8 +12,11 @@
 
     if(!empty($UserDetails)){
         $_SESSION['username'] = $username;
-        $_SESSION['healthUserFullName'] = $UserDetails[0];
-        $_SESSION['healthUserPrivileges'] = $UserDetails[1];
+        $_SESSION['healthUserId'] = $UserDetails[0];
+        $_SESSION['healthUserFullName'] = $UserDetails[1];
+        $_SESSION['healthUserPrivileges'] = $UserDetails[2];
+        $_SESSION['healthUserRole'] = $UserDetails[3];
+        $_SESSION['healthUserMOHOffice'] = $UserDetails[4];
         header("Location:../");
     }else{
         header("Location:index.php?error=Login_Error");

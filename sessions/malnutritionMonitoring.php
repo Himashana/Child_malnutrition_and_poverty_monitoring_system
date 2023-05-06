@@ -1,21 +1,22 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
     
-    createProperties($filePathPrefix = "../", $pageTitle = "Home");
+    createProperties($filePathPrefix = "../", $pageTitle = "Malnutrition monitoring");
     checkLoginStatus();
     menuSetActive(2);
 ?>
 
 <?php initializePage(); ?>
 
-<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
 <br><br>
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Malnutrition monitoring</h3>
+  <div class="panel-heading" style="height:55px;">
+        <input type="text" id="searchCtrl" class="form-control" placeholder="Search by id/name" style="width:150px; position: absolute; left:75%;">
   </div>
   <div class="panel-body">
+
+  <p id="filterInfo" class="badge"></p>
 
   <table class="table">
       <thead class="thead-light">
@@ -27,7 +28,7 @@
           <th scope="col">Options</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="table">
 
   <?php
     include('../child/Child.php');
@@ -45,8 +46,15 @@
             <td><?php echo $c[9]; ?></td>
             <td>MAM</td>
             <td>
+              <div class="form-inline">
                 <a href="viewSessions.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View sessions</button></a>
                 <a href="newSession.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">Start session</button></a>
+                <select type="text" name="assignee" onchange="updateAssignee();" id="assignee" placeholder="Assignee" class="form-control">
+                    <option value="Assignee">Assignee</option>    
+                    <option value="MOH - Mrs. shani">MOH - Mrs. shani</option>
+                    <option value="PHM - Maheshi Silva">PHM - Maheshi Silva</option>
+                </select>
+              </div>
             </td>
           </tr>
         <?php
@@ -61,5 +69,30 @@
 
   </div>
 </div>
+
+<script>
+    function updateAssignee(){
+        alert("The assignee was updated successfully.");
+    }
+</script>
+
+<script>
+  $(document).ready(function(){
+    $("#searchCtrl").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+
+      if(value == ""){
+        $("#filterInfo").text("")
+      }else{
+        $("#filterInfo").text("Filter=" + value)
+      }
+
+      $("#table tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+
+    });
+  });
+</script>
 
 <?php closePage(); ?>

@@ -30,3 +30,10 @@ body{
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.pdfLinks{
+    background-color:#E4E4E4; 
+    width:130px; 
+    padding:9px; 
+    border-radius:5px;
+}

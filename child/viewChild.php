@@ -10,60 +10,68 @@
 
 <center>
     <form action="registerChild.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
-    <h2>Child registration form</h2><br>
+    <h2>Child details</h2><br>
+
+    <?php
+        include('../child/Child.php');
+
+        $child = new Child();
+
+        if(isset($_GET['id'])){
+            $childDetails = $child->GetChild($_GET['id']);
+
+            if(empty($childDetails)){
+                die('<div class="alert alert-danger" role="alert">Sorry, no child found for this given id.</div>');
+            }
+        }else{
+            die('<div class="alert alert-danger" role="alert">Sorry, no child found for this given id.</div>');
+        }
+
+    ?>
 
     <table>
         <tr><td colspan="2"><center><u><h4>Personal details</h4></u></center></td></tr>
         <tr>
+            <td>Child registration No:&nbsp;</td>
+            <td><?php echo "00" . $childDetails[0] . "/Child/M/PK"; ?></td>
+        </tr><tr><td><br></td></tr>
+        <tr>
             <td>CHDR No:&nbsp;</td>
-            <td><input type="text" name="CHDRNo" id="CHDRNo" placeholder="Enter CHDR No" class="form-control" required></td>
+            <td><?php echo $childDetails[1]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>First name:&nbsp;</td>
-            <td><input type="text" name="firstName" id="firstName" placeholder="Enter first name" class="form-control" required></td>
+            <td><?php echo $childDetails[2]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Last name:&nbsp;</td>
-            <td><input type="text" name="lastName" id="lastName" placeholder="Enter last name" class="form-control" required></td>
+            <td><?php echo $childDetails[3]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Name of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverName" id="coreGiverName" placeholder="Enter coregiver name" class="form-control" required></td>
+            <td><?php echo $childDetails[4]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>NIC No of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverNIC" id="coreGiverNIC" placeholder="Enter coregiver NIC No" class="form-control" required></td>
+            <td><?php echo $childDetails[5]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Telephone/Mobile phone of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverPhone" id="coreGiverPhone" placeholder="Enter Telephone/Mobile No" class="form-control" required></td>
+            <td><?php echo $childDetails[6]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Address:&nbsp;</td>
-            <td><textarea name="childAddress" id="childAddress" placeholder="Enter address - city/lane/..." class="form-control" rows="3" required></textarea></td>
+            <td><?php echo $childDetails[7]; ?></td>
         </tr><tr><td><br></td></tr>
     
         <tr><td colspan="2"><center><u><h4>Bio details</h4></u></center></td></tr>
         <tr>
             <td>Date of the birth:&nbsp;</td>
-            <td><input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dd/mm/yyyy" class="form-control" required></td>
+            <td><?php echo $childDetails[8]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Gender:&nbsp;</td>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="childGender" id="childGenderMale" value="Male" required>
-                    <label class="form-check-label" for="childGenderMale">
-                        Male
-                    </label>
-                    </div>
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="childGender" id="childGenderFemale" value="Female" required>
-                    <label class="form-check-label" for="childGenderFemale">
-                        Female
-                    </label>
-                </div>
-            </td>
+            <td><?php echo $childDetails[9]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Weight on register date(Kg):&nbsp;</td>

@@ -7,7 +7,7 @@
 
 <?php initializePage(); ?>
 
-<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
+<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;"><?php echo $_SESSION['healthUserFullName'] . ' (00' . $_SESSION['healthUserId'] . '/PK)<br>' . $_SESSION['healthUserRole'] . ' - '. $_SESSION['healthUserMOHOffice'] . ' MOH office'; ?></div><hr>
 <center>
     <h2>DASHBOARD - PITAKOTTE MOH OFFICE</h2>
 </center>

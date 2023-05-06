@@ -1,13 +1,12 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
     checkLoginStatus();
-    createProperties($filePathPrefix = "../", $pageTitle = "Child Registration");
+    createProperties($filePathPrefix = "../", $pageTitle = "Malnutrition Monitoring");
     menuSetActive(2);
 ?>
 
 <?php initializePage(); ?>
 
-<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
 <center>
     <form action="registerChild.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Malnutrition Monitoring Session</h2><br>
@@ -183,8 +182,10 @@
         <tr>
             <td>Supplement treatment Guidelines:&nbsp;</td>
             <td>
+                <a href="../images/photo_6246629620061418692_x.jpg" id="MAMsuppGuidImg" style="display:none;" target="_BLANK">MAM supplementary guidelines image</a>
+                <a href="../images/photo_6246629620061418692_x.jpg" id="SAMsuppGuidImg" style="display:none;" target="_BLANK">SAM supplementary guidelines image</a>
                 <textarea name="supplementGuidelines" id="supplementGuidelines" placeholder="Enter the supplement treatment guidelines" class="form-control" rows="3"></textarea>
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="MAMsuppGuidImg" name="MAMsuppGuidImg">
                     <label class="form-check-label" for="MAMsuppGuidImg">MAM supplementary guidelines image</label>
                 </div>
@@ -193,15 +194,17 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="SAMsuppGuidImg" name="SAMsuppGuidImg">
                     <label class="form-check-label" for="SAMsuppGuidImg">SAM supplementary guidelines image</label>
-                </div>
+                </div> -->
             </td>
         </tr><tr><td><br></td></tr>
 
         <tr>
             <td>Dietary guidelines:&nbsp;</td>
             <td>
+                <a href="../images/photo_6246629620061418692_x.jpg" id="MAMdietaryGuidImg" style="display:none;" target="_BLANK">MAM dietary guidelines image</a>
+                <a href="../images/photo_6246629620061418692_x.jpg" id="SAMdietaryGuidImg" style="display:none;" target="_BLANK">SAM dietary guidelines image</a>
                 <textarea name="dietaryGuide" id="dietaryGuide" placeholder="Enter dietary guide for parent of child" class="form-control" rows="3"></textarea>
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="MAMdietaryGuidImg" name="MAMdietaryGuidImg">
                     <label class="form-check-label" for="MAMdietaryGuidImg">MAM dietary guidelines image</label>
                 </div>
@@ -210,7 +213,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="SAMdietaryGuidImg" name="SAMdietaryGuidImg">
                     <label class="form-check-label" for="SAMdietaryGuidImg">SAM dietary guidelines image</label>
-                </div>
+                </div> -->
             </td>
         </tr><tr><td><br></td></tr>
 
@@ -221,7 +224,7 @@
 
     </table>
 
-    <input type="submit" value="Cancel" class="btn btn-danger">&nbsp;&nbsp;
+    <input type="submit" value="Cancel" onclick="cancelBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
     <input type="submit" value="Save session" onclick="saveBtn_OnClick();" class="btn btn-primary">
 
     </form>
@@ -235,15 +238,31 @@
         if(childMUAC >= 5.0 && childMUAC <= 11.5){
             document.getElementById("malnutritionStage").style.backgroundColor = "#F76462";
             document.getElementById("malnutritionStage").value = "SAM";
+            document.getElementById("SAMsuppGuidImg").style.display = "block";
+            document.getElementById("MAMsuppGuidImg").style.display = "none";
+            document.getElementById("SAMdietaryGuidImg").style.display = "block";
+            document.getElementById("MAMdietaryGuidImg").style.display = "none";
         }else if(childMUAC >= 11.6 && childMUAC <= 12.5){
             document.getElementById("malnutritionStage").style.backgroundColor = "#EEE465";
             document.getElementById("malnutritionStage").value = "MAM";
+            document.getElementById("SAMsuppGuidImg").style.display = "none";
+            document.getElementById("MAMsuppGuidImg").style.display = "block";
+            document.getElementById("SAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg").style.display = "block";
         }else if(childMUAC >= 12.6 && childMUAC <= 19.9){
             document.getElementById("malnutritionStage").style.backgroundColor = "#63D36D";
             document.getElementById("malnutritionStage").value = "NORMAL";
+            document.getElementById("SAMsuppGuidImg").style.display = "none";
+            document.getElementById("MAMsuppGuidImg").style.display = "none";
+            document.getElementById("SAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg").style.display = "none";
         }else{
             document.getElementById("malnutritionStage").style.backgroundColor = "white";
             document.getElementById("malnutritionStage").value = "";
+            document.getElementById("SAMsuppGuidImg").style.display = "none";
+            document.getElementById("MAMsuppGuidImg").style.display = "none";
+            document.getElementById("SAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg").style.display = "none";
         }
     }
 </script>
@@ -251,6 +270,10 @@
 <script>
     function saveBtn_OnClick(){
         document.getElementById("form").submit();
+    }
+
+    function cancelBtn_OnClick(){
+        location.replace('index.php');
     }
 
     $(function () {
