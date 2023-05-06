@@ -1,5 +1,6 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
+    createProperties($filePathPrefix = "../", $pageTitle = "Child Registration");
     checkLoginStatus();
 
     include('./Child.php');

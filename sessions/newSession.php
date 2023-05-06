@@ -1,7 +1,7 @@
 <?php
-    include('./site.Master.php'); // Including the site master page.
+    include('../site.Master.php'); // Including the site master page.
     checkLoginStatus();
-    createProperties($filePathPrefix = "./", $pageTitle = "Child Registration");
+    createProperties($filePathPrefix = "../", $pageTitle = "Child Registration");
     menuSetActive(2);
 ?>
 
@@ -12,27 +12,44 @@
     <form action="registerChild.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Malnutrition Monitoring Session</h2><br>
 
+    <?php
+        include('../child/Child.php');
+
+        $child = new Child();
+
+        if(isset($_GET['id'])){
+            $childDetails = $child->GetChild($_GET['id']);
+
+            if(empty($childDetails)){
+                die('<div class="alert alert-danger" role="alert">Sorry, no child found for this given id.</div>');
+            }
+        }else{
+            die('<div class="alert alert-danger" role="alert">Sorry, no child found for this given id.</div>');
+        }
+
+    ?>
+
     <table>
         <tr><td colspan="2"><center><u><h4>Child bio details</h4></u></center></td></tr>
         <tr>
             <td>Child full name:&nbsp;</td>
-            <td><input type="text" name="childFullName" id="childFullName" class="form-control" disabled></td>
+            <td><input type="text" name="childFullName" id="childFullName" value="<?php echo $childDetails[2] . ' ' . $childDetails[3]; ?>" class="form-control" disabled></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Child date of birth:&nbsp;</td>
-            <td><input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" disabled></td>
+            <td><input type="text" name="dateOfBirth" id="dateOfBirth" value="<?php echo $childDetails[8]; ?>" class="form-control" disabled></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Gender:&nbsp;</td>
-            <td><input type="text" name="childGender" id="childGender" class="form-control" disabled></td>
+            <td><input type="text" name="childGender" id="childGender" value="<?php echo $childDetails[9]; ?>" class="form-control" disabled></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Age:&nbsp;</td>
-            <td><input type="text" name="childAge" id="childAge" class="form-control" disabled></td>
+            <td><input type="text" name="childAge" id="childAge" class="form-control" value="<?php echo date("Y") - intval(substr($childDetails[8], 6)) . ' years'; ?>" disabled></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date:&nbsp;</td>
-            <td><input type="text" name="date" id="date" placeholder="dd/mm/yyyy" class="form-control" disabled></td>
+            <td><input type="text" name="date" id="date" placeholder="dd/mm/yyyy" value="<?php echo date('d/m/Y'); ?>" class="form-control" disabled></td>
         </tr><tr><td><br></td></tr>
 
         <tr><td colspan="2"><center><u><h4>Nutrition Assessment</h4></u></center></td></tr>
@@ -51,16 +68,16 @@
         <tr>
             <td>MUAC (Cm):&nbsp;</td>
             <td><input type="text" name="childMUAC" id="childMUAC" placeholder="Enter child MUAC" class="form-control"></td>
-            <td>&nbsp;&nbsp;<button class="btn btn-primary">Calculate</button></td>
+            <td>&nbsp;&nbsp;<button class="btn btn-primary" id="calculateBtn" onclick="calculateBtn_OnClick();">Calculate</button></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Malnutrition Stage:&nbsp;</td>
             <td><input type="text" name="malnutritionStage" id="malnutritionStage" placeholder="N/A" class="form-control"></td>
         </tr><tr><td><br></td></tr>
-        <tr>
+        <!-- <tr>
             <td>Weight gain or loss:&nbsp;</td>
             <td><input type="text" name="weightGainLoss" id="weightGainLoss" placeholder="N/A" class="form-control"></td>
-        </tr><tr><td><br></td></tr>
+        </tr><tr><td><br></td></tr> -->
         <tr>
             <td>Chart images:&nbsp;</td>
             <td>
@@ -210,6 +227,26 @@
     </form>
 </center>
 <hr>
+
+<script>
+    function calculateBtn_OnClick(){
+        var childMUAC = document.getElementById("childMUAC").value;
+
+        if(childMUAC >= 5.0 && childMUAC <= 11.5){
+            document.getElementById("malnutritionStage").style.backgroundColor = "#F76462";
+            document.getElementById("malnutritionStage").value = "SAM";
+        }else if(childMUAC >= 11.6 && childMUAC <= 12.5){
+            document.getElementById("malnutritionStage").style.backgroundColor = "#EEE465";
+            document.getElementById("malnutritionStage").value = "MAM";
+        }else if(childMUAC >= 12.6 && childMUAC <= 19.9){
+            document.getElementById("malnutritionStage").style.backgroundColor = "#63D36D";
+            document.getElementById("malnutritionStage").value = "NORMAL";
+        }else{
+            document.getElementById("malnutritionStage").style.backgroundColor = "white";
+            document.getElementById("malnutritionStage").value = "";
+        }
+    }
+</script>
 
 <script>
     function saveBtn_OnClick(){

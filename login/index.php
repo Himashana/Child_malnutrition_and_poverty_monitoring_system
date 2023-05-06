@@ -31,7 +31,15 @@
             <h3>MALNUTRITION TRACKER</H3><br>
 
             <h4>Sign in to your account</h4><br>
-
+            
+            <?php
+                if(isset($_GET['error'])){
+                    if($_GET['error'] == "Login_Error"){
+                        echo '<div style="background-color:#FFA6A6; width:200px;">Username or password is incorrect.</div><br>';
+                    }
+                }
+            ?>
+            
             <table>
                 <tr>
                     <td>Username:&nbsp;</td>

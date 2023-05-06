@@ -1,7 +1,8 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
-    checkLoginStatus();
+    
     createProperties($filePathPrefix = "../", $pageTitle = "Home");
+    checkLoginStatus();
     menuSetActive(1);
 ?>
 
@@ -22,9 +23,14 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><a href="childRegistration.php"><button class="btn btn-primary">Add child</button></a></h3>
+    <div class="form-inline">
+        <a href="childRegistration.php"><button class="btn btn-primary">Add child</button></a>
+        <input type="text" id="searchCtrl" class="form-control" placeholder="Search by id/name" style="width:150px; position: absolute; left:75%;">
+    </div>
   </div>
   <div class="panel-body">
+
+  <p id="filterInfo" class="badge"></p>
 
   <table class="table">
       <thead class="thead-light">
@@ -36,7 +42,7 @@
           <th scope="col">Options</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="table">
 
   <?php
     include('./Child.php');
@@ -52,7 +58,7 @@
             <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
             <td><?php echo $c[2] . " " . $c[3]; ?></td>
             <td><?php echo $c[9]; ?></td>
-            <td><?php echo date("Y") - intval(substr($c[8], 6)); ?></td>
+            <td><?php echo date("Y") - intval(substr($c[8], 6)) . ' years'; ?></td>
             <td><a href="viewChild.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View profile</button></a></td>
           </tr>
         <?php
@@ -67,5 +73,24 @@
 
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#searchCtrl").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+
+      if(value == ""){
+        $("#filterInfo").text("")
+      }else{
+        $("#filterInfo").text("Filter=" + value)
+      }
+
+      $("#table tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+
+    });
+  });
+</script>
 
 <?php closePage(); ?>
