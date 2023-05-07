@@ -49,14 +49,14 @@
 
 <hr>
 
-<div style="overflow-y:auto; height:350px;">
+<div>
 <div class="panel panel-default">
   <div class="panel-heading" style="height:55px;">
     <div class="form-inline">
         <input type="text" id="searchCtrl" class="form-control" placeholder="Search by id/name" style="width:150px; position: absolute; left:75%;">
     </div>
   </div>
-  <div class="panel-body">
+  <div class="panel-body" style="overflow-y:auto; height:250px;">
 
   <p id="filterInfo" class="badge"></p>
 
@@ -69,6 +69,8 @@
           <th scope="col">Received amount (packets)</th>
           <th scope="col">Issued amount (packets)</th>
           <th scope="col">Available amount (packets)</th>
+          <th scope="col">Actions</th>
+          <th scope="col">Action date</th>
         </tr>
       </thead>
       <tbody id="table">
@@ -118,9 +120,25 @@
             <td><?php echo $i[1]; ?></td>
             <td><?php echo $i[3]; ?></td>
             <td><?php echo $i[2]; ?></td>
-            <td><?php echo $issuedAmountThriposha; ?></td>
-            <td><?php echo $i[2] - $issuedAmountThriposha; ?></td>
-            <td></td>
+            <td><?php 
+              if($i[1] == "Thriposha"){
+                  echo $issuedAmountThriposha;
+              }else if($i[1] == "BP100"){
+                  echo $issuedAmountBP100;
+              }
+             ?></td>
+            <td><?php 
+                if($i[1] == "Thriposha"){
+                    echo $i[2] - $issuedAmountThriposha;
+                }else if($i[1] == "BP100"){
+                    echo $i[2] - $issuedAmountBP100;
+                }
+            ?></td>
+            <td style="width:150px;">
+                <a href="editInventory.php?id=<?php echo $i[0]; ?>"><button class="btn btn-primary">Edit</button></a>
+                <a href=""><button class="btn btn-danger">Close</button></a>
+            </td>
+            <td><?php echo $i[4]; ?></td>
           </tr>
         <?php
       }
