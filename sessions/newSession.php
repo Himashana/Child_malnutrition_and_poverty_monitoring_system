@@ -8,7 +8,7 @@
 <?php initializePage(); ?>
 
 <center>
-    <form action="registerChild.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
+    <form action="createSession.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Malnutrition Monitoring Session</h2><br>
 
     <?php
@@ -30,6 +30,7 @@
 
     <table>
         <tr><td colspan="2"><center><u><h4>Child bio details</h4></u></center></td></tr>
+        <tr><td><input type="text" name="childId" id="childId" value="<?php echo $childDetails[0]; ?>" class="form-control" style="display:none;"></rd></tr>
         <tr>
             <td>Child full name:&nbsp;</td>
             <td><input type="text" name="childFullName" id="childFullName" value="<?php echo $childDetails[2] . ' ' . $childDetails[3]; ?>" class="form-control" disabled></td>
@@ -81,13 +82,13 @@
             <td>Chart images:&nbsp;</td>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="needWeightHeightChart" name="needWeightHeightChart">
+                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightHeightChart" name="needWeightHeightChart">
                     <label class="form-check-label" for="needWeightHeightChart">Weight,Height chart</label>
                 </div>
                 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="needWeightLengthChart" name="needWeightLengthChart">
+                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightLengthChart" name="needWeightLengthChart">
                     <label class="form-check-label" for="needWeightLengthChart">Weight,Length chart</label>
                 </div>
                 
@@ -99,37 +100,37 @@
         <tr>
             <td>RA01 - Poor income and poverly:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="RA01" name="RA01"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="RA01" name="RA01"></div>
             </td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>RA02 - Insufficient to child care:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="RA02" name="RA02"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="RA02" name="RA02"></div>
             </td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>RA03 - Poor child feeding practices:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="RA03" name="RA03"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="RA03" name="RA03"></div>
             </td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>RA04 - Low food security:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="RA04" name="RA04"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="RA04" name="RA04"></div>
             </td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>RA05 - Poor nutrition knowledge:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="RA05" name="RA05"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="RA05" name="RA05"></div>
             </td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>RA06 - Lack of access water and sanitation:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="RA06" name="RA06"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="RA06" name="RA06"></div>
             </td>
         </tr><tr><td><br></td></tr>
 
@@ -138,7 +139,7 @@
         <tr>
             <td>Vitamin A:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="isVitaminA" name="isVitaminA"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="isVitaminA" name="isVitaminA"></div>
                 <input type="text" name="noteForVitaminA" id="noteForVitaminA" placeholder="Enter note" class="form-control">
             </td>
         </tr><tr><td><br></td></tr>
@@ -146,7 +147,7 @@
         <tr>
             <td>Mebendazole:&nbsp;</td>
             <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="isMebendazole" name="isMebendazole"></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="isMebendazole" name="isMebendazole"></div>
                 <input type="text" name="noteForMebendazole" id="noteForMebendazole" placeholder="Enter note" class="form-control">
             </td>
         </tr><tr><td><br></td></tr>
@@ -156,12 +157,14 @@
             <td>
                 <select type="text" name="vaccineType" id="vaccineType" placeholder="Enter the vaccine" class="form-control">
                     <option value="Not given">Not given</option>
-                    <option value="Pentavalent">Pentavalent</option>
-                    <option value="Measeles,MUMPS,Rubella(MMR)">Measeles,MUMPS,Rubella(MMR)</option>
-                    <option value="DPT">DPT</option>
-                    <option value="OPV4">OPV4</option>
-                    <option value="MMR2">MMR2</option>
-                    <option value="DT">DT</option>
+                    <option value="OPV3 ( 6 months completed )">OPV3 ( 6 months completed )</option>
+                    <option value="Pentavalenta3 ( 6 months completed )">Pentavalenta3 ( 6 months completed )</option>
+                    <option value="JE - Japanese encephalitis ( 9 months completed )">JE - Japanese encephalitis ( 9 months completed )</option>
+                    <option value="MMR1 - Measles , mumps,rubella ( 12months completed )">MMR1 - Measles , mumps,rubella ( 12months completed )</option>
+                    <option value="OPV4 ( 18 months completed )">OPV4 ( 18 months completed )</option>
+                    <option value="DTP Diphteria ( 18 months completed )">DTP Diphteria ( 18 months completed )</option>
+                    <option value="MMR2 ( 3 years completed )">MMR2 ( 3 years completed )</option>
+                    <option value="OPV5 ( 5 years completed )">OPV5 ( 5 years completed )</option>
                 </select>
             </td>
         </tr><tr><td><br></td></tr>

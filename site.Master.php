@@ -57,7 +57,7 @@
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>child/viewChilds.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 1) ? 'menu-item-active' : ''; ?>">Child registration</div></a>
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>sessions/malnutritionMonitoring.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 2) ? 'menu-item-active' : ''; ?>">Malnutrition monitoring</div></a>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 3) ? 'menu-item-active' : ''; ?>">Child follow -ups</div>
-            <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 4) ? 'menu-item-active' : ''; ?>">Supplement inventory</div>
+            <a href="<?php echo $GLOBALS['filePathPrefix']; ?>inventory"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 4) ? 'menu-item-active' : ''; ?>">Supplement inventory</div></a>
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>newReport.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 5) ? 'menu-item-active' : ''; ?>">Reports</div></a>
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>circulars_and_manuals"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 6) ? 'menu-item-active' : ''; ?>">Circulars and manuals</div></a>
             <div class="menu-item <?php echo ($GLOBALS['menuItem'] == 7) ? 'menu-item-active' : ''; ?>">Profile</div>

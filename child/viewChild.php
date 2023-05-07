@@ -75,42 +75,34 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Weight on register date(Kg):&nbsp;</td>
-            <td><input type="text" name="childWeight" id="childWeight" placeholder="Enter child weight" class="form-control" required></td>
+            <td><?php echo $childDetails[10]; ?> Kg</td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Height on register date(Cm):&nbsp;</td>
-            <td><input type="text" name="childHeight" id="childHeight" placeholder="Enter child height" class="form-control" required></td>
+            <td><?php echo $childDetails[11]; ?> Cm</td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Length on register date(Cm):&nbsp;</td>
-            <td><input type="text" name="childLength" id="childLength" placeholder="Enter child length" class="form-control" required></td>
+            <td><?php echo $childDetails[12]; ?> Cm</td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>No any diseases / complications:&nbsp;</td>
-            <td>
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="yes" id="isAnyDisease" name="isAnyDisease"></div>
-            </td>
+            <td><?php echo $childDetails[13]; ?></td>
         </tr><tr><td><br></td></tr>
     
         <tr><td colspan="2"><center><u><h4>Other details</h4></u></center></td></tr>
         <tr>
             <td>Eligible family number:&nbsp;</td>
-            <td><input type="text" name="eligibleFamilyNo" id="eligibleFamilyNo" placeholder="Enter eligible family number" class="form-control"></td>
+            <td><?php echo $childDetails[14]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Ethinticity:&nbsp;</td>
-            <td>
-                <select type="text" name="childEthinticity" id="childEthinticity" placeholder="Enter the ethinticity" class="form-control">
-                    <option value="Sinhalese">Sinhalese</option>
-                    <option value="Tamil">Tamil</option>
-                    <option value="Muslims">Muslims</option>
-                </select>
-            </td>
+            <td><?php echo $childDetails[15]; ?></td>
         </tr><tr><td><br></td></tr>
     </table>
 
-    <input type="submit" value="Cancel" onclick="cancelBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
-    <input type="submit" value="Save" onclick="saveBtn_OnClick();" class="btn btn-primary">
+    <input type="submit" value="close" onclick="closeBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
+    <!-- <input type="submit" value="Save" onclick="saveBtn_OnClick();" class="btn btn-primary"> -->
 
     </form>
 </center>
@@ -134,7 +126,7 @@
         document.getElementById("form").submit();
     }
 
-    function cancelBtn_OnClick(){
+    function closeBtn_OnClick(){
         location.replace('index.php');
     }
 </script>
