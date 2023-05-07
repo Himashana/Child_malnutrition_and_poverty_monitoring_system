@@ -68,12 +68,37 @@
           <th scope="col">Expirt date</th>
           <th scope="col">Received amount (packets)</th>
           <th scope="col">Issued amount (packets)</th>
+          <th scope="col">Available amount (packets)</th>
         </tr>
       </thead>
       <tbody id="table">
 
   <?php
+
+    
+
     include('./Inventory.php');
+    include('../sessions/Session.php');
+
+    $session = new Session();
+    $sessions = $session->getSessions();
+
+    $issuedAmountThriposha = 0;
+    $issuedAmountBP100 = 0;
+
+    if(!empty($sessions)){
+        foreach ($sessions as $s){
+            if($s[19] == "Thriposha"){
+                $issuedAmountThriposha += (int)$s[20];
+            }
+
+            if($s[19] == "BP100"){
+                $issuedAmountBP100 += (int)$s[20];
+            }
+        }
+    }
+
+
 
     $inventory = new Inventory();
 
@@ -83,10 +108,18 @@
       foreach ($inventories as $i){
         ?>
           <tr>
-            <th scope="row"><?php echo "BP -A00". $i[0]; ?></th>
+            <th scope="row"><?php 
+            if($i[1] == "Thriposha"){
+                echo "TP -A00". $i[0];
+            }else if($i[1] == "BP100"){
+                echo "BP -A00". $i[0];
+            }
+             ?></th>
             <td><?php echo $i[1]; ?></td>
             <td><?php echo $i[3]; ?></td>
             <td><?php echo $i[2]; ?></td>
+            <td><?php echo $issuedAmountThriposha; ?></td>
+            <td><?php echo $i[2] - $issuedAmountThriposha; ?></td>
             <td></td>
           </tr>
         <?php
@@ -119,6 +152,25 @@
             minDate: "today"
         });
     });
+</script>
+
+<script>
+  $(document).ready(function(){
+    $("#searchCtrl").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+
+      if(value == ""){
+        $("#filterInfo").text("")
+      }else{
+        $("#filterInfo").text("Filter=" + value)
+      }
+
+      $("#table tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+
+    });
+  });
 </script>
 
 <?php closePage(); ?>
