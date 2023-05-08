@@ -40,6 +40,25 @@
             }
         }
 
+        function deleteInventory($inventoryId){
+            $dbconnection = new DBconnect();
+            $dbconnection->MakeConn();
+            
+            $query = 'DELETE FROM Inventory WHERE inventoryId=' . $inventoryId;
+
+            $results = $dbconnection->ExecuteQuery($query);
+
+            $dbconnection->CloseConn();
+
+            if($results == 1){
+                                    
+                return true;
+                
+            }else{
+                return false;
+            }
+        }
+
         function GetInventories(){
             $dbconnection = new DBconnect();
             $dbconnection->MakeConn();

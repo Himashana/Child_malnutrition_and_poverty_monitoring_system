@@ -32,6 +32,9 @@
 
   <?php
     include('../child/Child.php');
+    include('./Session.php');
+
+    $session = new Session();
 
     $child = new Child();
 
@@ -44,7 +47,27 @@
             <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
             <td><?php echo $c[2] . " " . $c[3]; ?></td>
             <td><?php echo $c[9]; ?></td>
-            <td>MAM</td>
+            <td>
+              <?php
+                $sessions = $session->getChildSessions($c[0]);
+            
+                if(!empty($sessions)){
+                  if($sessions[0][6] >= 5.0 && $sessions[0][6] <= 11.5){
+                    echo "SAM";
+                  }else if($sessions[0][6] >= 11.6 && $sessions[0][6] <= 12.5){
+                      echo "MAM";
+                  }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
+                      echo "NORMAL";
+                  }else{
+                      echo "N/A";
+                  }
+                }else{
+                    echo "N/A";
+                }
+                    
+              ?>
+
+            </td>
             <td>
               <div class="form-inline">
                 <a href="viewSessions.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View sessions</button></a>
@@ -71,8 +94,13 @@
 </div>
 
 <script>
-    function updateAssignee(){
-        alert("The assignee was updated successfully.");
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function updateAssignee(){
+        await sleep(100);
+        alert(document.getElementById('assignee').value + " was assigned successfully.");
     }
 </script>
 

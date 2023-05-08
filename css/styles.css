@@ -37,3 +37,14 @@ body{
     padding:9px; 
     border-radius:5px;
 }
+
+.notificationsBox{
+    background-color: rgb(240, 240, 240);
+    position: fixed;
+    right:5%;
+    width:250px;
+    height:500px;
+    z-index: 1;
+    border:3px solid gray;
+    border-radius: 5px;
+}

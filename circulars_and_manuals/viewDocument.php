@@ -1,7 +1,7 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
-    checkLoginStatus();
     createProperties($filePathPrefix = "../", $pageTitle = "Circulars and manuals");
+    checkLoginStatus();
     menuSetActive(6);
 ?>
 

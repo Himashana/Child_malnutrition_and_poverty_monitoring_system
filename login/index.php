@@ -55,9 +55,9 @@
                         <p style="color:red; display:none;" id="passwordErrorMsg">Please enter the password</p>
                     </td>
                 </tr><tr><td><br></td></tr>
-                <tr>
+                <!-- <tr>
                     <td colspan="2"><a href="">Forget password?</a></td>
-                </tr><tr><td><br></td></tr>
+                </tr><tr><td><br></td></tr> -->
             </table>
             <input type="submit" value="SIGN IN" onclick="signinBtn_OnClick();" class="btn btn-primary"><br><br>
         </div>

@@ -7,7 +7,17 @@
 
 <?php initializePage(); ?>
 
-<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;"><?php echo $_SESSION['healthUserFullName'] . ' (00' . $_SESSION['healthUserId'] . '/PK)<br>' . $_SESSION['healthUserRole'] . ' - '. $_SESSION['healthUserMOHOffice'] . ' MOH office'; ?></div><hr>
+<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">
+    <?php echo $_SESSION['healthUserFullName'] . ' (00' . $_SESSION['healthUserId'] . '/PK)<br>' . $_SESSION['healthUserRole'] . ' - '. $_SESSION['healthUserMOHOffice'] . ' MOH office'; ?>
+    <i class='fa fa-bell' onclick="showNotifications();" style='font-size:25px; position: absolute; right:5%;'></i>
+    
+    <div class="notificationsBox" style="display:none;" id="notificationsBox">
+        <center>
+            <br>No new notifications
+        </center>
+    </div>
+</div><hr>
+
 <center>
     <h2>DASHBOARD - PITAKOTTE MOH OFFICE</h2>
 </center>
@@ -20,6 +30,23 @@
     </div>
     <div class="col-md-6"><div id="piechart2"><br><br><div style="background-color:#A6A6A6; color:white; border-radius:6px; padding:10px; width:150px;">Loading the chart...</div></div></div>
 </div>
+
+
+<script>
+    function showNotifications(){
+        var notificationsBox = document.getElementById('notificationsBox');
+
+        if(notificationsBox.style.display == "none"){
+            notificationsBox.style.display = "block";
+            return
+        }
+        
+        if(notificationsBox.style.display == "block"){
+            notificationsBox.style.display = "none";
+            return
+        }
+    }
+</script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 

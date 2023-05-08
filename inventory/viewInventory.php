@@ -1,7 +1,7 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
-    checkLoginStatus();
     createProperties($filePathPrefix = "../", $pageTitle = "Supplement resource management");
+    checkLoginStatus();
     menuSetActive(4);
 ?>
 
@@ -14,9 +14,9 @@
     <?php
         if(isset($_GET['alert'])){
             if($_GET['alert'] == "success"){
-            echo '<div class="alert alert-success" role="alert">The resource entry was created successfully.</div>';
+            echo '<div class="alert alert-success" role="alert">The resource entries was updated successfully.</div>';
             }elseif($_GET['alert'] == "unsuccess"){
-            echo '<div class="alert alert-danger" role="alert">Sorry, failed to create the resource entry.</div>';
+            echo '<div class="alert alert-danger" role="alert">Sorry, failed to update the resource entries.</div>';
             }
         }
     ?>
@@ -136,7 +136,7 @@
             ?></td>
             <td style="width:150px;">
                 <a href="editInventory.php?id=<?php echo $i[0]; ?>"><button class="btn btn-primary">Edit</button></a>
-                <a href=""><button class="btn btn-danger">Close</button></a>
+                <a href="closeInventory.php?id=<?php echo $i[0]; ?>"><button class="btn btn-danger">Close</button></a>
             </td>
             <td><?php echo $i[4]; ?></td>
           </tr>
