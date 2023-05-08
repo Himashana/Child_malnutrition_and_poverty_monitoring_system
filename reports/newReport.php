@@ -1,14 +1,14 @@
 <?php
-    include('./site.Master.php'); // Including the site master page.
+    include('../site.Master.php'); // Including the site master page.
     checkLoginStatus();
-    createProperties($filePathPrefix = "./", $pageTitle = "New reports");
+    createProperties($filePathPrefix = "../", $pageTitle = "New reports");
     menuSetActive(5);
 ?>
 
 <?php initializePage(); ?>
 
 <center>
-    <form action="registerChild.php" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
+    <form action="createReport.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Reports</h2><br>
 
     <table>
@@ -52,8 +52,8 @@
         </tr><tr><td><br></td></tr>
     </table>
 
-    <input type="submit" value="Cancel" class="btn btn-danger">&nbsp;&nbsp;
-    <input type="submit" value="Print" class="btn btn-primary">
+    <input type="submit" value="Cancel" onclick="cancelBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
+    <input type="submit" value="Print" onclick="printBtn_OnClick();" class="btn btn-primary">
 
     </form>
 </center>
@@ -79,6 +79,16 @@
             maxDate: "today"
         });
     });
+</script>
+
+<script>
+    function printBtn_OnClick(){
+        document.getElementById("form").submit();
+    }
+
+    function cancelBtn_OnClick(){
+        location.replace('../index.php');
+    }
 </script>
 
 <?php closePage(); ?>
