@@ -57,7 +57,14 @@
             <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
             <td><?php echo $c[2] . " " . $c[3]; ?></td>
             <td><?php echo $c[9]; ?></td>
-            <td><?php echo date("Y") - intval(substr($c[8], 6)) . ' years'; ?></td>
+            <td><?php 
+                $age = date("Y") - intval(substr($c[8], 6));
+                if ($age == 0){
+                    echo date("m") - substr($c[8], 3, 2) . " months";
+                }else{
+                    echo $age . ' years';
+                }
+            ?></td>
             <td><a href="viewChild.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View profile</button></a></td>
           </tr>
         <?php

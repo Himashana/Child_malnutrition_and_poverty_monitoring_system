@@ -23,11 +23,11 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date from:&nbsp;</td>
-            <td><input type="text" name="fromDate" id="fromDate" placeholder="dd/mm/yyyy" class="form-control"></td>
+            <td><input type="text" name="fromDate" id="fromDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off"></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date to:&nbsp;</td>
-            <td><input type="text" name="toDate" id="toDate" placeholder="dd/mm/yyyy" class="form-control"></td>
+            <td><input type="text" name="toDate" id="toDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off"></td>
         </tr><tr><td><br></td></tr>
 
         <tr>
