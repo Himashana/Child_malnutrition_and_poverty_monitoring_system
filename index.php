@@ -13,8 +13,11 @@
     
     <div class="notificationsBox" style="display:none;" id="notificationsBox">
         <center>
-            <br>No new notifications
+            <p id="noNotificationsMsg">No new notifications<p>
         </center>
+        <div style="background-color:white; width:100%; border: 3px solid #DED6D6; height:60px; padding:5px; display:none;" id="message">
+            Message
+        </div>
     </div>
 </div><hr>
 
@@ -45,6 +48,12 @@
             notificationsBox.style.display = "none";
             return
         }
+    }
+
+    if(sessionStorage.getItem("assignee") != null){
+        document.getElementById("noNotificationsMsg").style.display = "none";
+        document.getElementById("message").style.display = "block";
+        document.getElementById('message').innerHTML = sessionStorage.getItem("assigneeNotification");
     }
 </script>
 

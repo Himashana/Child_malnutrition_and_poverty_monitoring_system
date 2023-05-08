@@ -6,7 +6,7 @@
             $dbconnection = new DBconnect();
             $dbconnection->MakeConn();
             
-            $query = 'INSERT INTO HealthUser(fullName, role, MOHOffice, userName, userPassword, userPrivileges, phoneNo, NICNO, address) VALUES (' . $fullName . ', "' . $role . '", "' . $MOHOffice . '", "' . $username . '", "' . $userPassword . '", ' . $userPrivileges . ', "' . $phoneNo . '", "' . $NICNo . '", "' . $address . '")';
+            $query = 'INSERT INTO HealthUser(fullName, role, MOHOffice, userName, userPassword, userPrivileges, phoneNo, NICNO, address) VALUES ("' . $fullName . '", "' . $role . '", "' . $MOHOffice . '", "' . $username . '", "' . $userPassword . '", ' . $userPrivileges . ', "' . $phoneNo . '", "' . $NICNo . '", "' . $address . '")';
 
             $results = $dbconnection->ExecuteQuery($query);
             $UserDetails = array();

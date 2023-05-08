@@ -16,9 +16,9 @@
 <?php
   if(isset($_GET['alert'])){
     if($_GET['alert'] == "success"){
-      echo '<div class="alert alert-success" role="alert">The child was registered successfully.</div>';
+      echo '<div class="alert alert-success" role="alert">The user was registered successfully.</div>';
     }elseif($_GET['alert'] == "unsuccess"){
-      echo '<div class="alert alert-danger" role="alert">Sorry, failed to register the child right now..</div>';
+      echo '<div class="alert alert-danger" role="alert">Sorry, failed to register the user right now..</div>';
     }
   }
 ?>
@@ -69,7 +69,7 @@
             <td><?php echo $u[6] . "<br>" . $u[5]; ?></td>
             <td><?php echo $u[3]; ?></td>
             <td><?php echo $u[4]; ?></td>
-            <td><a href="viewChild.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View profile</button></a></td>
+            <td><a href=""><button class="btn btn-primary">View profile</button></a></td>
           </tr>
         <?php
       }

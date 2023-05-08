@@ -45,7 +45,16 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Age:&nbsp;</td>
-            <td><input type="text" name="childAge" id="childAge" class="form-control" value="<?php echo date("Y") - intval(substr($childDetails[8], 6)) . ' years'; ?>" disabled></td>
+            <td><input type="text" name="childAge" id="childAge" class="form-control" value="<?php 
+                
+                $age = date("Y") - intval(substr($childDetails[8], 6));
+                if ($age == 0){
+                    echo date("m") - substr($childDetails[8], 3, 2) . " months";
+                }else{
+                    echo $age . ' years';
+                }
+            
+            ?>" disabled></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date:&nbsp;</td>
