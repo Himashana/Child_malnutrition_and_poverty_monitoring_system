@@ -8,7 +8,7 @@
 <?php initializePage(); ?>
 
 <center>
-    <form action="createReport.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
+    <form action="createReport.php" target="_blank" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Reports</h2><br>
 
     <table>
