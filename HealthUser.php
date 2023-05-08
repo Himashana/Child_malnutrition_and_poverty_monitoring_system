@@ -6,7 +6,7 @@
             $dbconnection = new DBconnect();
             $dbconnection->MakeConn();
             
-            $query = 'SELECT fullName, userPrivileges FROM HealthUser
+            $query = 'SELECT userId, fullName, userPrivileges, role, MOHOffice, phoneNo, NICNO, address FROM HealthUser
                         WHERE userName="' . $username . '" AND userPassword="' . $password . '"';
 
             $results = $dbconnection->ExecuteQuery($query);
@@ -15,7 +15,7 @@
             if($results){
                                     
                 while($r = mysqli_fetch_assoc($results)){
-                    array_push($UserDetails, $r['fullName'], $r['userPrivileges']);
+                    array_push($UserDetails, $r['userId'], $r['fullName'], $r['userPrivileges'], $r['role'], $r['MOHOffice'], $r['phoneNo'], $r['NICNO'], $r['address']);
                 }
                 
             }

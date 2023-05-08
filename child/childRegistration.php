@@ -1,13 +1,13 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
-    checkLoginStatus();
+    
     createProperties($filePathPrefix = "../", $pageTitle = "Child Registration");
+    checkLoginStatus();
     menuSetActive(1);
 ?>
 
 <?php initializePage(); ?>
 
-<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
 <center>
     <form action="registerChild.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Child registration form</h2><br>
@@ -16,49 +16,49 @@
         <tr><td colspan="2"><center><u><h4>Personal details</h4></u></center></td></tr>
         <tr>
             <td>CHDR No:&nbsp;</td>
-            <td><input type="text" name="CHDRNo" id="CHDRNo" placeholder="Enter CHDR No" class="form-control"></td>
+            <td><input type="text" name="CHDRNo" id="CHDRNo" placeholder="Enter CHDR No" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>First name:&nbsp;</td>
-            <td><input type="text" name="firstName" id="firstName" placeholder="Enter first name" class="form-control"></td>
+            <td><input type="text" name="firstName" id="firstName" placeholder="Enter first name" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Last name:&nbsp;</td>
-            <td><input type="text" name="lastName" id="lastName" placeholder="Enter last name" class="form-control"></td>
+            <td><input type="text" name="lastName" id="lastName" placeholder="Enter last name" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Name of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverName" id="coreGiverName" placeholder="Enter coregiver name" class="form-control"></td>
+            <td><input type="text" name="coreGiverName" id="coreGiverName" placeholder="Enter coregiver name" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>NIC No of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverNIC" id="coreGiverNIC" placeholder="Enter coregiver NIC No" class="form-control"></td>
+            <td><input type="text" name="coreGiverNIC" id="coreGiverNIC" placeholder="Enter coregiver NIC No" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Telephone/Mobile phone of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverPhone" id="coreGiverPhone" placeholder="Enter Telephone/Mobile No" class="form-control"></td>
+            <td><input type="text" name="coreGiverPhone" id="coreGiverPhone" placeholder="Enter Telephone/Mobile No" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Address:&nbsp;</td>
-            <td><textarea name="childAddress" id="childAddress" placeholder="Enter address - city/lane/..." class="form-control" rows="3"></textarea></td>
+            <td><textarea name="childAddress" id="childAddress" placeholder="Enter address - city/lane/..." class="form-control" rows="3" required></textarea></td>
         </tr><tr><td><br></td></tr>
     
         <tr><td colspan="2"><center><u><h4>Bio details</h4></u></center></td></tr>
         <tr>
             <td>Date of the birth:&nbsp;</td>
-            <td><input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dd/mm/yyyy" class="form-control"></td>
+            <td><input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="dd/mm/yyyy" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Gender:&nbsp;</td>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="childGender" id="childGenderMale" value="Male">
+                    <input class="form-check-input" type="radio" name="childGender" id="childGenderMale" value="Male" required>
                     <label class="form-check-label" for="childGenderMale">
                         Male
                     </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="childGender" id="childGenderFemale" value="Female">
+                    <input class="form-check-input" type="radio" name="childGender" id="childGenderFemale" value="Female" required>
                     <label class="form-check-label" for="childGenderFemale">
                         Female
                     </label>
@@ -67,15 +67,15 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Weight on register date(Kg):&nbsp;</td>
-            <td><input type="text" name="childWeight" id="childWeight" placeholder="Enter child weight" class="form-control"></td>
+            <td><input type="text" name="childWeight" id="childWeight" placeholder="Enter child weight" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Height on register date(Cm):&nbsp;</td>
-            <td><input type="text" name="childHeight" id="childHeight" placeholder="Enter child height" class="form-control"></td>
+            <td><input type="text" name="childHeight" id="childHeight" placeholder="Enter child height" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Length on register date(Cm):&nbsp;</td>
-            <td><input type="text" name="childLength" id="childLength" placeholder="Enter child length" class="form-control"></td>
+            <td><input type="text" name="childLength" id="childLength" placeholder="Enter child length" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>No any diseases / complications:&nbsp;</td>
@@ -101,7 +101,7 @@
         </tr><tr><td><br></td></tr>
     </table>
 
-    <input type="submit" value="Cancel" class="btn btn-danger">&nbsp;&nbsp;
+    <input type="submit" value="Cancel" onclick="cancelBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
     <input type="submit" value="Save" onclick="saveBtn_OnClick();" class="btn btn-primary">
 
     </form>
@@ -124,6 +124,10 @@
 <script>
     function saveBtn_OnClick(){
         document.getElementById("form").submit();
+    }
+
+    function cancelBtn_OnClick(){
+        location.replace('index.php');
     }
 </script>
 

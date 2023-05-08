@@ -1,15 +1,14 @@
 <?php
-    include('./site.Master.php'); // Including the site master page.
+    include('../site.Master.php'); // Including the site master page.
     checkLoginStatus();
-    createProperties($filePathPrefix = "./", $pageTitle = "Child Registration");
+    createProperties($filePathPrefix = "../", $pageTitle = "New reports");
     menuSetActive(5);
 ?>
 
 <?php initializePage(); ?>
 
-<div style="background-color:white; color:black; margin-left:0px; padding-top:10px;">User details - top header</div>
 <center>
-    <form action="registerChild.php" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
+    <form action="createReport.php" target="_blank" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
     <h2>Reports</h2><br>
 
     <table>
@@ -24,11 +23,11 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date from:&nbsp;</td>
-            <td><input type="text" name="fromDate" id="fromDate" placeholder="dd/mm/yyyy" class="form-control"></td>
+            <td><input type="text" name="fromDate" id="fromDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off"></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date to:&nbsp;</td>
-            <td><input type="text" name="toDate" id="toDate" placeholder="dd/mm/yyyy" class="form-control"></td>
+            <td><input type="text" name="toDate" id="toDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off"></td>
         </tr><tr><td><br></td></tr>
 
         <tr>
@@ -53,8 +52,8 @@
         </tr><tr><td><br></td></tr>
     </table>
 
-    <input type="submit" value="Cancel" class="btn btn-danger">&nbsp;&nbsp;
-    <input type="submit" value="Print" class="btn btn-primary">
+    <input type="submit" value="Cancel" onclick="cancelBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
+    <input type="submit" value="Print" onclick="printBtn_OnClick();" class="btn btn-primary">
 
     </form>
 </center>
@@ -80,6 +79,16 @@
             maxDate: "today"
         });
     });
+</script>
+
+<script>
+    function printBtn_OnClick(){
+        document.getElementById("form").submit();
+    }
+
+    function cancelBtn_OnClick(){
+        location.replace('../index.php');
+    }
 </script>
 
 <?php closePage(); ?>
