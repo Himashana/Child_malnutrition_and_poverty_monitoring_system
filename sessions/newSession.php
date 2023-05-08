@@ -185,8 +185,8 @@
         <tr>
             <td>Supplement treatment Guidelines:&nbsp;</td>
             <td>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="MAMsuppGuidImg" style="display:none;" target="_BLANK">MAM supplementary guidelines image</a>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="SAMsuppGuidImg" style="display:none;" target="_BLANK">SAM supplementary guidelines image</a>
+                <a href="../images/MAM_SUP.jpg" id="MAMsuppGuidImg" style="display:none;" target="_BLANK">MAM supplementary guidelines image</a>
+                <a href="../images/SAM_SUP.jpg" id="SAMsuppGuidImg" style="display:none;" target="_BLANK">SAM supplementary guidelines image</a>
                 <textarea name="supplementGuidelines" id="supplementGuidelines" placeholder="Enter the supplement treatment guidelines" class="form-control" rows="3"></textarea>
                 <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="MAMsuppGuidImg" name="MAMsuppGuidImg">
@@ -204,8 +204,9 @@
         <tr>
             <td>Dietary guidelines:&nbsp;</td>
             <td>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="MAMdietaryGuidImg" style="display:none;" target="_BLANK">MAM dietary guidelines image</a>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="SAMdietaryGuidImg" style="display:none;" target="_BLANK">SAM dietary guidelines image</a>
+                <a href="../images/MAM_SAM_D.jpg" id="MAMdietaryGuidImg1" style="display:none;" target="_BLANK">MAM dietary guidelines image 1</a>
+                <a href="../images/MAM_D2.jpg" id="MAMdietaryGuidImg2" style="display:none;" target="_BLANK">MAM dietary guidelines image 2</a>
+                <a href="../images/MAM_SAM_D.jpg" id="SAMdietaryGuidImg" style="display:none;" target="_BLANK">SAM dietary guidelines image</a>
                 <textarea name="dietaryGuide" id="dietaryGuide" placeholder="Enter dietary guide for parent of child" class="form-control" rows="3"></textarea>
                 <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="MAMdietaryGuidImg" name="MAMdietaryGuidImg">
@@ -244,28 +245,32 @@
             document.getElementById("SAMsuppGuidImg").style.display = "block";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "block";
-            document.getElementById("MAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }else if(childMUAC >= 11.6 && childMUAC <= 12.5){
             document.getElementById("malnutritionStage").style.backgroundColor = "#EEE465";
             document.getElementById("malnutritionStage").value = "MAM";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "block";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
-            document.getElementById("MAMdietaryGuidImg").style.display = "block";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "block";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "block";
         }else if(childMUAC >= 12.6 && childMUAC <= 19.9){
             document.getElementById("malnutritionStage").style.backgroundColor = "#63D36D";
             document.getElementById("malnutritionStage").value = "NORMAL";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
-            document.getElementById("MAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }else{
             document.getElementById("malnutritionStage").style.backgroundColor = "white";
             document.getElementById("malnutritionStage").value = "";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
-            document.getElementById("MAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }
     }
 </script>

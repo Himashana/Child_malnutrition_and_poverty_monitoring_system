@@ -38,6 +38,7 @@
           <th scope="col">Malnutrition Stage</th>
           <th scope="col">Supplement</th>
           <th scope="col">Supplement Packets</th>
+          <th scope="col">Supplement Guidelines</th>
           <th scope="col">Next session date</th>
         </tr>
       </thead>
@@ -75,6 +76,7 @@
             </td>
             <td><?php echo $s[19]; ?></td>
             <td><?php echo $s[20]; ?></td>
+            <td><?php echo $s[21]; ?></td>
             <td><?php echo $s[23]; ?></td>
             <!-- <td>
               <div class="form-inline">
