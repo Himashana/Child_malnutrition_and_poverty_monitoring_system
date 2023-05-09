@@ -15,6 +15,16 @@
   }
 ?>
 
+<?php
+  if(isset($_GET['alert'])){
+    if($_GET['alert'] == "success"){
+      echo '<div class="alert alert-success" role="alert">The session was created successfully.</div>';
+    }elseif($_GET['alert'] == "unsuccess"){
+      echo '<div class="alert alert-danger" role="alert">Sorry, failed to create the session right now.</div>';
+    }
+  }
+?>
+
 <a href="index.php"><button class="btn btn-primary">< Go back</button></a><hr>
 
 <h4>Child registration No: 00<?php echo $_GET['id']; ?>/Child/M/PK</h4>

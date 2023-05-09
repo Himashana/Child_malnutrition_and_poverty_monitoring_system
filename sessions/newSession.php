@@ -51,7 +51,11 @@
                 if ($age == 0){
                     echo date("m") - substr($childDetails[8], 3, 2) . " months";
                 }else{
-                    echo $age . ' years';
+                    if(substr($childDetails[8], 3, 2) > date("m")){
+                        echo (12 - substr($childDetails[8], 3, 2)) + date("m") . " months";
+                      }else{
+                        echo $age . ' years';
+                      }
                 }
             
             ?>" disabled></td>

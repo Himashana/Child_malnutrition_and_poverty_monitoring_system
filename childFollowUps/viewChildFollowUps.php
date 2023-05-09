@@ -13,7 +13,11 @@
 <div class="panel panel-default">
   <div class="panel-heading" style="height:55px;">
         <form method="POST" action="viewChildFollowUps.php" class="form-inline">      
-            <input type="text" name="fromDate" id="fromDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off">
+            <input type="text" name="fromDate" id="fromDate" placeholder="dd/mm/yyyy" value="<?php
+                if(isset($_POST["fromDate"])){
+                  echo $_POST["fromDate"];
+                }
+              ?>" class="form-control" autocomplete="off">
             <input type="submit" value="Filter" class="btn btn-primary">
             <input type="text" id="searchCtrl" class="form-control" placeholder="Search by id/name" style="width:150px; position: absolute; left:75%;">
         </form>
@@ -50,9 +54,9 @@
       foreach ($childs as $c){
         $sessions = $session->getChildSessions($c[0]);
         if(!empty($sessions)){
-        // if(isset($_POST["fromDate"])){
+        if(isset($_POST["fromDate"])){
             // echo $sessions[0][23] . " | " . date('d/m/Y', strtotime($sessions[0][23])) .  " >= " . date('d/m/Y', strtotime($_POST['fromDate'])) . "<br>";
-            // if($sessions[0][23] >= date('d/m/Y', strtotime($_POST['fromDate']))){
+            if($sessions[0][23] == $_POST['fromDate']){
         ?>
           <tr>
             <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
@@ -93,8 +97,49 @@
             </td>
           </tr>
         <?php
-            // }
-        // }
+            }
+        }else{
+          ?>
+          <tr>
+            <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
+            <td><?php echo $c[2] . " " . $c[3]; ?></td>
+            <td><?php echo $c[9]; ?></td>
+            <td>MOH</td>
+            <td>
+              <?php
+            
+                if(!empty($sessions)){
+                  if($sessions[0][6] >= 5.0 && $sessions[0][6] <= 11.5){
+                    echo "SAM";
+                  }else if($sessions[0][6] >= 11.6 && $sessions[0][6] <= 12.5){
+                      echo "MAM";
+                  }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
+                      echo "NORMAL";
+                  }else{
+                      echo "N/A";
+                  }
+                }else{
+                    echo "N/A";
+                }
+                    
+              ?>
+
+            </td>
+            <td><?php 
+                if(!empty($sessions)){
+                    echo $sessions[0][23];
+                }else{
+                    echo 'N/A';
+                }
+             ?></td>
+            <td>
+              <div class="form-inline">
+                <a href="../sessions/newSession.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">Start session</button></a>
+              </div>
+            </td>
+          </tr>
+        <?php
+        }
         }
       }
     }else{

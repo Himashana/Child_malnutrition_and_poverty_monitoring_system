@@ -69,7 +69,7 @@
             <td><?php echo $u[6] . "<br>" . $u[5]; ?></td>
             <td><?php echo $u[3]; ?></td>
             <td><?php echo $u[4]; ?></td>
-            <td><a href=""><button class="btn btn-primary">View profile</button></a></td>
+            <td><a href="viewProfile.php?id=<?php echo $u[0]; ?>"><button class="btn btn-primary">View profile</button></a></td>
           </tr>
         <?php
       }

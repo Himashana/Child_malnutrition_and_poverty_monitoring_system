@@ -62,7 +62,11 @@
                 if ($age == 0){
                     echo date("m") - substr($c[8], 3, 2) . " months";
                 }else{
-                    echo $age . ' years';
+                    if(substr($c[8], 3, 2) > date("m")){
+                      echo (12 - substr($c[8], 3, 2)) + date("m") . " months";
+                    }else{
+                      echo $age . ' years';
+                    }
                 }
             ?></td>
             <td><a href="viewChild.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">View profile</button></a></td>
