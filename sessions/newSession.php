@@ -79,13 +79,18 @@
             <td><input type="text" name="childLength" id="childLength" placeholder="Enter child length" class="form-control"></td>
         </tr><tr><td><br></td></tr>
         <tr>
+            <td>Malnutrition Stage:&nbsp;</td>
+            <td><input type="text" name="malnutritionStage" id="malnutritionStage" placeholder="N/A" class="form-control"></td>
+            <td>&nbsp;&nbsp;<button class="btn btn-primary" id="calculateBtn" onclick="calculateStageBtn_OnClick();">Calculate</button></td>
+        </tr><tr><td><br></td></tr>
+        <tr>
             <td>MUAC (Cm):&nbsp;</td>
             <td><input type="text" name="childMUAC" id="childMUAC" placeholder="Enter child MUAC" class="form-control"></td>
             <td>&nbsp;&nbsp;<button class="btn btn-primary" id="calculateBtn" onclick="calculateBtn_OnClick();">Calculate</button></td>
         </tr><tr><td><br></td></tr>
         <tr>
-            <td>Malnutrition Stage:&nbsp;</td>
-            <td><input type="text" name="malnutritionStage" id="malnutritionStage" placeholder="N/A" class="form-control"></td>
+            <td>Malnutrition Stage (based on MUAC):&nbsp;</td>
+            <td><input type="text" name="malnutritionStageMUAC" id="malnutritionStageMUAC" placeholder="N/A" class="form-control"></td>
         </tr><tr><td><br></td></tr>
         <!-- <tr>
             <td>Weight gain or loss:&nbsp;</td>
@@ -253,32 +258,32 @@
         var childMUAC = document.getElementById("childMUAC").value;
 
         if(childMUAC >= 5.0 && childMUAC <= 11.5){
-            document.getElementById("malnutritionStage").style.backgroundColor = "#F76462";
-            document.getElementById("malnutritionStage").value = "SAM";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "#F76462";
+            document.getElementById("malnutritionStageMUAC").value = "SAM";
             document.getElementById("SAMsuppGuidImg").style.display = "block";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "block";
             document.getElementById("MAMdietaryGuidImg1").style.display = "none";
             document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }else if(childMUAC >= 11.6 && childMUAC <= 12.5){
-            document.getElementById("malnutritionStage").style.backgroundColor = "#EEE465";
-            document.getElementById("malnutritionStage").value = "MAM";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "#EEE465";
+            document.getElementById("malnutritionStageMUAC").value = "MAM";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "block";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
             document.getElementById("MAMdietaryGuidImg1").style.display = "block";
             document.getElementById("MAMdietaryGuidImg2").style.display = "block";
         }else if(childMUAC >= 12.6 && childMUAC <= 19.9){
-            document.getElementById("malnutritionStage").style.backgroundColor = "#63D36D";
-            document.getElementById("malnutritionStage").value = "NORMAL";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "#63D36D";
+            document.getElementById("malnutritionStageMUAC").value = "NORMAL";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
             document.getElementById("MAMdietaryGuidImg1").style.display = "none";
             document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }else{
-            document.getElementById("malnutritionStage").style.backgroundColor = "white";
-            document.getElementById("malnutritionStage").value = "";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "white";
+            document.getElementById("malnutritionStageMUAC").value = "";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
@@ -308,5 +313,7 @@
         });
     });
 </script>
+
+<script src="./calculateStage.js"></script>
 
 <?php closePage(); ?>
