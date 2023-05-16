@@ -48,11 +48,11 @@
             <td><?php echo $childDetails[3]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
-            <td>Name of the core giver:&nbsp;</td>
+            <td>Name of the care giver:&nbsp;</td>
             <td><?php echo $childDetails[4]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>
-            <td>NIC No of the core giver:&nbsp;</td>
+            <td>NIC No of the care giver:&nbsp;</td>
             <td><?php echo $childDetails[5]; ?></td>
         </tr><tr><td><br></td></tr>
         <tr>

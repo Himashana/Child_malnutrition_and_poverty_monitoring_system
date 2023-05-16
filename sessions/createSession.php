@@ -76,6 +76,14 @@
         if($_POST['childLength'] == ""){
             $_POST['childLength'] = 0;
         }
+
+        if(isset($_POST['childMUAC'])){
+            if($_POST['childMUAC'] == ""){
+                $_POST['childMUAC'] = 0;
+                echo"ABC";
+            }
+            
+        }
     
         try{
             $result = $session->addSession($_POST['childId'], date('d/m/Y'), $_POST['childWeight'], $_POST['childHeight'], $_POST['childLength'], $_POST['childMUAC'], $chartImages, $RA01, $RA02, $RA03, $RA04, $RA05, $RA06, $isVitaminA, $_POST['noteForVitaminA'], $isMebendazole, $_POST['noteForMebendazole'], $_POST['vaccineType'], $_POST['supplement'], $_POST['supplementAmount'], $_POST['supplementGuidelines'], $_POST['dietaryGuide'], $_POST['nextSessionDate']);

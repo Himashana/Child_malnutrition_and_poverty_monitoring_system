@@ -100,14 +100,14 @@
             <td>Chart images:&nbsp;</td>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightHeightChart" name="needWeightHeightChart">
-                    <label class="form-check-label" for="needWeightHeightChart">Weight,Height chart</label>
+                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightHeightChart" style="display:none;" name="needWeightHeightChart">
+                    <label class="form-check-label" for="needWeightHeightChart">Weight,Height chart <a href="../images/Chart1.jpg" target="_BANCK">Boys (2 -5 years)</a>&nbsp;<a href="../images/Chart3.jpg" target="_BANCK">Girls (2 -5 years)</a></label>
                 </div>
                 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightLengthChart" name="needWeightLengthChart">
-                    <label class="form-check-label" for="needWeightLengthChart">Weight,Length chart</label>
+                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightLengthChart" style="display:none;" name="needWeightLengthChart">
+                    <label class="form-check-label" for="needWeightLengthChart">Weight,Length chart <a href="../images/Chart2.jpg" target="_BANCK">Boys (0 -2 years)</a>&nbsp;<a href="../images/Chart4.jpg" target="_BANCK">Girls (0 - 2 years)</a></label>
                 </div>
                 
             </td>

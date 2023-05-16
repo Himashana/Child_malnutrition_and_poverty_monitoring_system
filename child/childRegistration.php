@@ -27,12 +27,12 @@
             <td><input type="text" name="lastName" id="lastName" placeholder="Enter last name" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
-            <td>Name of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverName" id="coreGiverName" placeholder="Enter coregiver name" class="form-control" required></td>
+            <td>Name of the care giver:&nbsp;</td>
+            <td><input type="text" name="coreGiverName" id="coreGiverName" placeholder="Enter caregiver name" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
-            <td>NIC No of the core giver:&nbsp;</td>
-            <td><input type="text" name="coreGiverNIC" id="coreGiverNIC" placeholder="Enter coregiver NIC No" class="form-control" required></td>
+            <td>NIC No of the care giver:&nbsp;</td>
+            <td><input type="text" name="coreGiverNIC" id="coreGiverNIC" placeholder="Enter caregiver NIC No" class="form-control" required></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Telephone/Mobile phone of the core giver:&nbsp;</td>
