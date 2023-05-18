@@ -62,7 +62,7 @@
             <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
             <td><?php echo $c[2] . " " . $c[3]; ?></td>
             <td><?php echo $c[9]; ?></td>
-            <td>MOH</td>
+            <td id="assignee">N/A</td>
             <td>
               <?php
             
@@ -104,7 +104,7 @@
             <th scope="row"><?php echo "00". $c[0] . "/Child/M/PK"; ?></th>
             <td><?php echo $c[2] . " " . $c[3]; ?></td>
             <td><?php echo $c[9]; ?></td>
-            <td>MOH</td>
+            <td id="assignee">N/A</td>
             <td>
               <?php
             
@@ -178,6 +178,12 @@
         changeMonth: true,
         changeYear: true
     });
+</script>
+
+<script>
+    if(sessionStorage.getItem("assignee") != null){
+        document.getElementById('assignee').innerHTML = sessionStorage.getItem("assignee").substring(0, 3);
+    }
 </script>
 
 <?php closePage(); ?>

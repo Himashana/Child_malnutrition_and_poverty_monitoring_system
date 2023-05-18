@@ -32,7 +32,7 @@
   <div class="panel-heading" style="height:55px;">
         <input type="text" id="searchCtrl" class="form-control" placeholder="Search by id/name" style="width:150px; position: absolute; left:75%;">
   </div>
-  <div class="panel-body">
+  <div class="panel-body" style="overflow-x:auto; overflow-y:auto; height:500px;">
 
   <p id="filterInfo" class="badge"></p>
 
@@ -46,9 +46,13 @@
           <th scope="col">Length (Cm)</th>
           <th scope="col">MUAC (Cm)</th>
           <th scope="col">Malnutrition Stage</th>
+          <th scope="col">Vitamin A</th>
+          <th scope="col">Mebendazole</th>
+          <th scope="col">Vaccine</th>
           <th scope="col">Supplement</th>
           <th scope="col">Supplement Packets</th>
           <th scope="col">Supplement Guidelines</th>
+          <th scope="col">Dietary Guidelines</th>
           <th scope="col">Next session date</th>
         </tr>
       </thead>
@@ -84,9 +88,25 @@
                     }
                 ?>
             </td>
+            <td><?php 
+            if($s[14] == "yes"){
+                echo '<input type="checkbox" checked disabled>';
+            }else{
+                echo '<input type="checkbox" disabled>';
+            }
+            ?></td>
+            <td><?php 
+              if($s[16] == "yes"){
+                echo '<input type="checkbox" checked disabled>';
+              }else{
+                  echo '<input type="checkbox" disabled>';
+              }
+            ?></td>
+            <td><?php echo $s[18]; ?></td>
             <td><?php echo $s[19]; ?></td>
             <td><?php echo $s[20]; ?></td>
             <td><?php echo $s[21]; ?></td>
+            <td><?php echo $s[22]; ?></td>
             <td><?php echo $s[23]; ?></td>
             <!-- <td>
               <div class="form-inline">

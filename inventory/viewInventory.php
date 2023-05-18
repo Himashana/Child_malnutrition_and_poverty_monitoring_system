@@ -38,7 +38,8 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Expiry date:&nbsp;</td>
-            <td><input type="text" name="expiryDate" id="expiryDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off"></td>
+            <td><input type="text" name="expiryDate" id="expiryDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off">
+            <br><p style="color:red; display:none;" id="expiryDate_errormsg">Please enter the expiry date.</p></td>
         </tr><tr><td><br></td></tr>
     </table>
 
@@ -156,7 +157,12 @@
 
 <script>
     function saveBtn_OnClick(){
-        document.getElementById("form").submit();
+        if(document.getElementById("expiryDate").value != ""){
+          document.getElementById("expiryDate_errormsg").style.display = "none";
+          document.getElementById("form").submit();
+        }else{
+          document.getElementById("expiryDate_errormsg").style.display = "block";
+        }
     }
 
 
