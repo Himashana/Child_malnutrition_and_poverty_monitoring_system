@@ -10,6 +10,8 @@
 
 <br><br>
 
+<script src="../sessions/calculateStage_v2.js"></script>
+
 <div class="panel panel-default">
   <div class="panel-heading" style="height:55px;">
         <form method="POST" action="viewChildFollowUps.php" class="form-inline">      
@@ -116,7 +118,11 @@
                   }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
                       echo "NORMAL";
                   }else{
-                      echo "N/A";
+                      if($sessions[0][6] == 0){
+                        ?> <script>document.write(calculateStage("<?php echo $c[8]; ?>", "<?php echo $c[9]; ?>", <?php echo $sessions[0][5]; ?>, <?php echo $sessions[0][3]; ?>, <?php echo $sessions[0][4]; ?>));</script> <?php
+                      }else{
+                        echo "N/A";
+                      }
                   }
                 }else{
                     echo "N/A";
@@ -185,5 +191,7 @@
         document.getElementById('assignee').innerHTML = sessionStorage.getItem("assignee").substring(0, 3);
     }
 </script>
+
+
 
 <?php closePage(); ?>

@@ -196,10 +196,7 @@
                 </select>
             </td>
         </tr><tr><td><br></td></tr>
-        <tr>
-            <td>Supplement Packets (Amount):&nbsp;</td>
-            <td><input type="number" name="supplementAmount" id="supplementAmount" placeholder="0" value="1" min="1" class="form-control"></td>
-        </tr><tr><td><br></td></tr>
+        
         <tr>
             <td>Supplement treatment Guidelines:&nbsp;</td>
             <td>
@@ -220,6 +217,11 @@
         </tr><tr><td><br></td></tr>
 
         <tr>
+            <td>Supplement Packets (Amount):&nbsp;</td>
+            <td><input type="number" name="supplementAmount" id="supplementAmount" placeholder="0" value="1" min="1" class="form-control"></td>
+        </tr><tr><td><br></td></tr>
+        
+        <tr>
             <td>Dietary guidelines:&nbsp;</td>
             <td>
                 <a href="../images/MAM_SAM_D.jpg" id="MAMdietaryGuidImg1" style="display:none;" target="_BLANK">MAM dietary guidelines image 1</a>
@@ -239,6 +241,7 @@
             </td>
         </tr><tr><td><br></td></tr>
 
+        
         <tr>
             <td>Next session date:&nbsp;</td>
             <td><input type="text" name="nextSessionDate" id="nextSessionDate" placeholder="dd/mm/yyyy" class="form-control"></td>
@@ -314,6 +317,24 @@
     });
 </script>
 
-<script src="./calculateStage.js"></script>
+<script src="./calculateStage_v2.js"></script>
+
+<script>
+    function calculateStageBtn_OnClick(){
+        var stage;
+
+        stage = calculateStage(document.getElementById("dateOfBirth").value, document.getElementById("childGender").value, document.getElementById("childLength").value, document.getElementById("childWeight").value, document.getElementById("childHeight").value);
+
+        if(stage == "SAM"){
+            setSAM();
+        }else if(stage == "MAM"){
+            setMAM();
+        }else if(stage == "NORMAL"){
+            setNORMAL();
+        }else{
+            setStageNone();
+        }
+    }
+</script>
 
 <?php closePage(); ?>
