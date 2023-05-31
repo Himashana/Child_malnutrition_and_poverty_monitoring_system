@@ -64,16 +64,36 @@
         }else{
             $isMebendazole = $_POST['isMebendazole'];
         }
+
+        if($_POST['childWeight'] == ""){
+            $_POST['childWeight'] = 0;
+        }
+
+        if($_POST['childHeight'] == ""){
+            $_POST['childHeight'] = 0;
+        }
+
+        if($_POST['childLength'] == ""){
+            $_POST['childLength'] = 0;
+        }
+
+        if(isset($_POST['childMUAC'])){
+            if($_POST['childMUAC'] == ""){
+                $_POST['childMUAC'] = 0;
+                echo"ABC";
+            }
+            
+        }
     
         try{
             $result = $session->addSession($_POST['childId'], date('d/m/Y'), $_POST['childWeight'], $_POST['childHeight'], $_POST['childLength'], $_POST['childMUAC'], $chartImages, $RA01, $RA02, $RA03, $RA04, $RA05, $RA06, $isVitaminA, $_POST['noteForVitaminA'], $isMebendazole, $_POST['noteForMebendazole'], $_POST['vaccineType'], $_POST['supplement'], $_POST['supplementAmount'], $_POST['supplementGuidelines'], $_POST['dietaryGuide'], $_POST['nextSessionDate']);
     
             if($result){
-                header("Location:malnutritionMonitoring.php?alert=success");
+                header("Location:viewSessions.php?id=" . $_POST['childId'] . "&alert=success");
             }else{
-                header("Location:malnutritionMonitoring.php?alert=unsuccess");
+                header("Location:viewSessions.php?id=" . $_POST['childId'] . "&alert=unsuccess");
             }
         } catch(Exception $e) {
-            header("Location:malnutritionMonitoring.php?alert=unsuccess");
+            header("Location:viewSessions.php?id=" . $_POST['childId'] . "&alert=unsuccess");
         }
 ?>

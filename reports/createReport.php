@@ -73,7 +73,11 @@
                 if ($age == 0){
                     echo date("m") - substr($c[8], 3, 2) . " months";
                 }else{
+                  if(substr($c[8], 3, 2) > date("m")){
+                    echo (12 - substr($c[8], 3, 2)) + date("m") . " months";
+                  }else{
                     echo $age . ' years';
+                  }
                 }
             ?></td>
             <td scope="row"><?php echo $c[16]; ?></td>
@@ -147,7 +151,11 @@
                 if ($age == 0){
                     echo date("m") - substr($c[8], 3, 2) . " months";
                 }else{
+                  if(substr($c[8], 3, 2) > date("m")){
+                    echo (12 - substr($c[8], 3, 2)) + date("m") . " months";
+                  }else{
                     echo $age . ' years';
+                  }
                 }
             ?></td>
             <td scope="row"><?php echo $c[16]; ?></td>

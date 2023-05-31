@@ -62,6 +62,7 @@
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>circulars_and_manuals"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 6) ? 'menu-item-active' : ''; ?>">Circulars and manuals</div></a>
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>login/profile.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 7) ? 'menu-item-active' : ''; ?>">Profile</div></a>
             <a href="<?php echo $GLOBALS['filePathPrefix']; ?>login/logout.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 8) ? 'menu-item-active' : ''; ?>">Log out</div></a>
+            <a href="<?php echo $GLOBALS['filePathPrefix']; ?>settings.php"><div class="menu-item <?php echo ($GLOBALS['menuItem'] == 9) ? 'menu-item-active' : ''; ?>">Settings</div></a>
         </div>
 
         <div class="col-md-10" style="background-color:white;">

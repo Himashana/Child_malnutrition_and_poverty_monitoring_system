@@ -45,7 +45,20 @@
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Age:&nbsp;</td>
-            <td><input type="text" name="childAge" id="childAge" class="form-control" value="<?php echo date("Y") - intval(substr($childDetails[8], 6)) . ' years'; ?>" disabled></td>
+            <td><input type="text" name="childAge" id="childAge" class="form-control" value="<?php 
+                
+                $age = date("Y") - intval(substr($childDetails[8], 6));
+                if ($age == 0){
+                    echo date("m") - substr($childDetails[8], 3, 2) . " months";
+                }else{
+                    if(substr($childDetails[8], 3, 2) > date("m")){
+                        echo (12 - substr($childDetails[8], 3, 2)) + date("m") . " months";
+                      }else{
+                        echo $age . ' years';
+                      }
+                }
+            
+            ?>" disabled></td>
         </tr><tr><td><br></td></tr>
         <tr>
             <td>Date:&nbsp;</td>
@@ -66,13 +79,18 @@
             <td><input type="text" name="childLength" id="childLength" placeholder="Enter child length" class="form-control"></td>
         </tr><tr><td><br></td></tr>
         <tr>
+            <td>Malnutrition Stage:&nbsp;</td>
+            <td><input type="text" name="malnutritionStage" id="malnutritionStage" placeholder="N/A" class="form-control"></td>
+            <td>&nbsp;&nbsp;<button class="btn btn-primary" id="calculateBtn" onclick="calculateStageBtn_OnClick();">Calculate</button></td>
+        </tr><tr><td><br></td></tr>
+        <tr>
             <td>MUAC (Cm):&nbsp;</td>
             <td><input type="text" name="childMUAC" id="childMUAC" placeholder="Enter child MUAC" class="form-control"></td>
             <td>&nbsp;&nbsp;<button class="btn btn-primary" id="calculateBtn" onclick="calculateBtn_OnClick();">Calculate</button></td>
         </tr><tr><td><br></td></tr>
         <tr>
-            <td>Malnutrition Stage:&nbsp;</td>
-            <td><input type="text" name="malnutritionStage" id="malnutritionStage" placeholder="N/A" class="form-control"></td>
+            <td>Malnutrition Stage (based on MUAC):&nbsp;</td>
+            <td><input type="text" name="malnutritionStageMUAC" id="malnutritionStageMUAC" placeholder="N/A" class="form-control"></td>
         </tr><tr><td><br></td></tr>
         <!-- <tr>
             <td>Weight gain or loss:&nbsp;</td>
@@ -82,14 +100,14 @@
             <td>Chart images:&nbsp;</td>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightHeightChart" name="needWeightHeightChart">
-                    <label class="form-check-label" for="needWeightHeightChart">Weight,Height chart</label>
+                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightHeightChart" style="display:none;" name="needWeightHeightChart">
+                    <label class="form-check-label" for="needWeightHeightChart">Weight,Height chart <a href="../images/Chart1.jpg" target="_BANCK">Boys (2 -5 years)</a>&nbsp;<a href="../images/Chart3.jpg" target="_BANCK">Girls (2 -5 years)</a></label>
                 </div>
                 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightLengthChart" name="needWeightLengthChart">
-                    <label class="form-check-label" for="needWeightLengthChart">Weight,Length chart</label>
+                    <input class="form-check-input" type="checkbox" value="yes" id="needWeightLengthChart" style="display:none;" name="needWeightLengthChart">
+                    <label class="form-check-label" for="needWeightLengthChart">Weight,Length chart <a href="../images/Chart2.jpg" target="_BANCK">Boys (0 -2 years)</a>&nbsp;<a href="../images/Chart4.jpg" target="_BANCK">Girls (0 - 2 years)</a></label>
                 </div>
                 
             </td>
@@ -178,15 +196,12 @@
                 </select>
             </td>
         </tr><tr><td><br></td></tr>
-        <tr>
-            <td>Supplement Packets (Amount):&nbsp;</td>
-            <td><input type="number" name="supplementAmount" id="supplementAmount" placeholder="0" value="1" min="1" class="form-control"></td>
-        </tr><tr><td><br></td></tr>
+        
         <tr>
             <td>Supplement treatment Guidelines:&nbsp;</td>
             <td>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="MAMsuppGuidImg" style="display:none;" target="_BLANK">MAM supplementary guidelines image</a>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="SAMsuppGuidImg" style="display:none;" target="_BLANK">SAM supplementary guidelines image</a>
+                <a href="../images/MAM_SUP.jpg" id="MAMsuppGuidImg" style="display:none;" target="_BLANK">MAM supplementary guidelines image</a>
+                <a href="../images/SAM_SUP.jpg" id="SAMsuppGuidImg" style="display:none;" target="_BLANK">SAM supplementary guidelines image</a>
                 <textarea name="supplementGuidelines" id="supplementGuidelines" placeholder="Enter the supplement treatment guidelines" class="form-control" rows="3"></textarea>
                 <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="MAMsuppGuidImg" name="MAMsuppGuidImg">
@@ -202,10 +217,16 @@
         </tr><tr><td><br></td></tr>
 
         <tr>
+            <td>Supplement Packets (Amount):&nbsp;</td>
+            <td><input type="number" name="supplementAmount" id="supplementAmount" placeholder="0" value="1" min="1" class="form-control"></td>
+        </tr><tr><td><br></td></tr>
+        
+        <tr>
             <td>Dietary guidelines:&nbsp;</td>
             <td>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="MAMdietaryGuidImg" style="display:none;" target="_BLANK">MAM dietary guidelines image</a>
-                <a href="../images/photo_6246629620061418692_x.jpg" id="SAMdietaryGuidImg" style="display:none;" target="_BLANK">SAM dietary guidelines image</a>
+                <a href="../images/MAM_SAM_D.jpg" id="MAMdietaryGuidImg1" style="display:none;" target="_BLANK">MAM dietary guidelines image 1</a>
+                <a href="../images/MAM_D2.jpg" id="MAMdietaryGuidImg2" style="display:none;" target="_BLANK">MAM dietary guidelines image 2</a>
+                <a href="../images/MAM_SAM_D.jpg" id="SAMdietaryGuidImg" style="display:none;" target="_BLANK">SAM dietary guidelines image</a>
                 <textarea name="dietaryGuide" id="dietaryGuide" placeholder="Enter dietary guide for parent of child" class="form-control" rows="3"></textarea>
                 <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="MAMdietaryGuidImg" name="MAMdietaryGuidImg">
@@ -220,6 +241,7 @@
             </td>
         </tr><tr><td><br></td></tr>
 
+        
         <tr>
             <td>Next session date:&nbsp;</td>
             <td><input type="text" name="nextSessionDate" id="nextSessionDate" placeholder="dd/mm/yyyy" class="form-control"></td>
@@ -239,33 +261,37 @@
         var childMUAC = document.getElementById("childMUAC").value;
 
         if(childMUAC >= 5.0 && childMUAC <= 11.5){
-            document.getElementById("malnutritionStage").style.backgroundColor = "#F76462";
-            document.getElementById("malnutritionStage").value = "SAM";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "#F76462";
+            document.getElementById("malnutritionStageMUAC").value = "SAM";
             document.getElementById("SAMsuppGuidImg").style.display = "block";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "block";
-            document.getElementById("MAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }else if(childMUAC >= 11.6 && childMUAC <= 12.5){
-            document.getElementById("malnutritionStage").style.backgroundColor = "#EEE465";
-            document.getElementById("malnutritionStage").value = "MAM";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "#EEE465";
+            document.getElementById("malnutritionStageMUAC").value = "MAM";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "block";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
-            document.getElementById("MAMdietaryGuidImg").style.display = "block";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "block";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "block";
         }else if(childMUAC >= 12.6 && childMUAC <= 19.9){
-            document.getElementById("malnutritionStage").style.backgroundColor = "#63D36D";
-            document.getElementById("malnutritionStage").value = "NORMAL";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "#63D36D";
+            document.getElementById("malnutritionStageMUAC").value = "NORMAL";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
-            document.getElementById("MAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }else{
-            document.getElementById("malnutritionStage").style.backgroundColor = "white";
-            document.getElementById("malnutritionStage").value = "";
+            document.getElementById("malnutritionStageMUAC").style.backgroundColor = "white";
+            document.getElementById("malnutritionStageMUAC").value = "";
             document.getElementById("SAMsuppGuidImg").style.display = "none";
             document.getElementById("MAMsuppGuidImg").style.display = "none";
             document.getElementById("SAMdietaryGuidImg").style.display = "none";
-            document.getElementById("MAMdietaryGuidImg").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg1").style.display = "none";
+            document.getElementById("MAMdietaryGuidImg2").style.display = "none";
         }
     }
 </script>
@@ -289,6 +315,26 @@
             minDate: "today"
         });
     });
+</script>
+
+<script src="./calculateStage_v2.js"></script>
+
+<script>
+    function calculateStageBtn_OnClick(){
+        var stage;
+
+        stage = calculateStage(document.getElementById("dateOfBirth").value, document.getElementById("childGender").value, document.getElementById("childLength").value, document.getElementById("childWeight").value, document.getElementById("childHeight").value);
+
+        if(stage == "SAM"){
+            setSAM();
+        }else if(stage == "MAM"){
+            setMAM();
+        }else if(stage == "NORMAL"){
+            setNORMAL();
+        }else{
+            setStageNone();
+        }
+    }
 </script>
 
 <?php closePage(); ?>

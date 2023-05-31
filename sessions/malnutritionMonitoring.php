@@ -94,13 +94,22 @@
 </div>
 
 <script>
+    
+    if(sessionStorage.getItem("assignee") != null){
+        document.getElementById('assignee').value = sessionStorage.getItem("assignee");
+    }
+
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     async function updateAssignee(){
-        await sleep(100);
-        alert(document.getElementById('assignee').value + " was assigned successfully.");
+        if(document.getElementById('assignee').value != "Assignee"){
+          sessionStorage.setItem("assignee", document.getElementById('assignee').value);
+          sessionStorage.setItem("assigneeNotification", document.getElementById('assignee').value + " was assigned successfully.");
+          await sleep(100);
+          alert(document.getElementById('assignee').value + " was assigned successfully.");
+        }
     }
 </script>
 
