@@ -25,6 +25,8 @@
   }
 ?>
 
+<script src="./calculateStage_v2.js"></script>
+
 <a href="index.php"><button class="btn btn-primary">< Go back</button></a><hr>
 
 <h4>Child registration No: 00<?php echo $_GET['id']; ?>/Child/M/PK</h4>
@@ -84,7 +86,11 @@
                     }else if($s[6] >= 12.6 && $s[6] <= 19.9){
                         echo "NORMAL";
                     }else{
+                      if($sessions[6] == 0){
+                        ?> <script>document.write(calculateStage("<?php echo $c[8]; ?>", "<?php echo $c[9]; ?>", <?php echo $sessions[5]; ?>, <?php echo $sessions[3]; ?>, <?php echo $sessions[4]; ?>));</script> <?php
+                      }else{
                         echo "N/A";
+                      }
                     }
                 ?>
             </td>

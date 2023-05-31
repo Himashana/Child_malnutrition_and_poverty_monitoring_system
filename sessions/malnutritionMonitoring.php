@@ -10,6 +10,8 @@
 
 <br><br>
 
+<script src="./calculateStage_v2.js"></script>
+
 <div class="panel panel-default">
   <div class="panel-heading" style="height:55px;">
         <input type="text" id="searchCtrl" class="form-control" placeholder="Search by id/name" style="width:150px; position: absolute; left:75%;">
@@ -59,7 +61,11 @@
                   }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
                       echo "NORMAL";
                   }else{
+                    if($sessions[0][6] == 0){
+                      ?> <script>document.write(calculateStage("<?php echo $c[8]; ?>", "<?php echo $c[9]; ?>", <?php echo $sessions[0][5]; ?>, <?php echo $sessions[0][3]; ?>, <?php echo $sessions[0][4]; ?>));</script> <?php
+                    }else{
                       echo "N/A";
+                    }
                   }
                 }else{
                     echo "N/A";

@@ -76,7 +76,11 @@
                   }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
                       echo "NORMAL";
                   }else{
+                    if($sessions[0][6] == 0){
+                      ?> <script>document.write(calculateStage("<?php echo $c[8]; ?>", "<?php echo $c[9]; ?>", <?php echo $sessions[0][5]; ?>, <?php echo $sessions[0][3]; ?>, <?php echo $sessions[0][4]; ?>));</script> <?php
+                    }else{
                       echo "N/A";
+                    }
                   }
                 }else{
                     echo "N/A";

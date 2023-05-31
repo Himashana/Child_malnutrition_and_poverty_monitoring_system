@@ -1,0 +1,11 @@
+ALTER TABLE Session
+MODIFY childWeight double;
+
+ALTER TABLE Session
+MODIFY childHeight double;
+
+ALTER TABLE Session
+MODIFY childLength double;
+
+ALTER TABLE Session
+MODIFY childMUAC double;
