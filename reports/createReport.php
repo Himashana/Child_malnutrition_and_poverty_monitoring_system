@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
+    <script src="../sessions/calculateStage_v2.js"></script>
 </head>
 <body>
 <div style="padding:11px; margin:10px; border:2px solid black;" id="reportContent">
@@ -57,7 +58,7 @@
 
     if(!empty($childs)){
       foreach ($childs as $c){
-        if(date('d/m/Y', strtotime($c[16])) >= date('d/m/Y', strtotime($_POST['fromDate'])) && date('d/m/Y', strtotime($c[16])) <= date('d/m/Y', strtotime($_POST['toDate']))){
+        if(date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) >= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['fromDate']))) && date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) <= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['toDate'])))){
             $count += 1;
         ?>
           <tr>
@@ -136,7 +137,7 @@
 
     if(!empty($childs)){
       foreach ($childs as $c){
-        if(date('d/m/Y', strtotime($c[16])) >= date('d/m/Y', strtotime($_POST['fromDate'])) && date('d/m/Y', strtotime($c[16])) <= date('d/m/Y', strtotime($_POST['toDate']))){
+        if(date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) >= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['fromDate']))) && date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) <= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['toDate'])))){
             $count += 1;
         ?>
           <tr>
@@ -174,7 +175,11 @@
                   }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
                       echo "NORMAL";
                   }else{
+                    if($sessions[0][6] == 0){
+                      ?> <script>document.write(calculateStage("<?php echo $c[8]; ?>", "<?php echo $c[9]; ?>", <?php echo $sessions[0][5]; ?>, <?php echo $sessions[0][3]; ?>, <?php echo $sessions[0][4]; ?>));</script> <?php
+                    }else{
                       echo "N/A";
+                    }
                   }
                 }else{
                     echo "N/A";
@@ -185,17 +190,19 @@
             <td scope="row">
                 <?php 
                     if(!empty($sessions)){
-                        $durationOftreatement = intval(substr($sessions[0][2], 6)) - intval(substr($c[16], 6));
-                        if ($durationOftreatement == 0){
-                            $durationOftreatement = substr($sessions[0][2], 3, 2) - substr($c[16], 3, 2);
-                            if($durationOftreatement == 0){
-                                echo substr($sessions[0][2], 0, 2) - substr($c[16], 0, 2) . " days";
-                            }else{
-                                echo $durationOftreatement . " months";
-                            }
-                        }else{
-                            echo $durationOftreatement . ' years';
-                        }
+                        $date_deff = date_diff(date_create(date('Y/m/d', strtotime(str_replace('/', '-', $sessions[0][2])))), date_create(date('Y/m/d', strtotime(str_replace('/', '-', $c[16])))));
+                        echo $date_deff->format("%a days");
+                        // $durationOftreatement = intval(substr($sessions[0][2], 6)) - intval(substr($c[16], 6));
+                        // if ($durationOftreatement == 0){
+                        //     $durationOftreatement = substr($sessions[0][2], 3, 2) - substr($c[16], 3, 2);
+                        //     if($durationOftreatement == 0){
+                        //         echo substr($sessions[0][2], 0, 2) - substr($c[16], 0, 2) . " days";
+                        //     }else{
+                        //         echo $durationOftreatement . " months";
+                        //     }
+                        // }else{
+                        //     echo $durationOftreatement . ' years';
+                        // }
                     }else{
                         echo '0 days';
                     }

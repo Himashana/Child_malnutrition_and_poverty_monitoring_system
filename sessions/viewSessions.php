@@ -62,12 +62,15 @@
 
   <?php
     include('./Session.php');
+    include('../child/Child.php');
 
     $session = new Session();
+    $child = new Child();
 
     $sessions = $session->getChildSessions($_GET['id']);
+    $childDetails = $child->GetChild($_GET['id']);
 
-    if(!empty($sessions)){
+    if(!empty($sessions) && !empty($childDetails)){
       foreach ($sessions as $s){
         ?>
           <tr>
@@ -86,8 +89,8 @@
                     }else if($s[6] >= 12.6 && $s[6] <= 19.9){
                         echo "NORMAL";
                     }else{
-                      if($sessions[6] == 0){
-                        ?> <script>document.write(calculateStage("<?php echo $c[8]; ?>", "<?php echo $c[9]; ?>", <?php echo $sessions[5]; ?>, <?php echo $sessions[3]; ?>, <?php echo $sessions[4]; ?>));</script> <?php
+                      if($s[6] == 0){
+                        ?> <script>document.write(calculateStage("<?php echo $childDetails[8]; ?>", "<?php echo $childDetails[9]; ?>", <?php echo $s[5]; ?>, <?php echo $s[3]; ?>, <?php echo $s[4]; ?>));</script> <?php
                       }else{
                         echo "N/A";
                       }
