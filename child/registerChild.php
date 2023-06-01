@@ -13,6 +13,31 @@
         $isAnyDisease = $_POST['isAnyDisease'];
     }
 
+    if ($_POST['CHDRNo'] == ""){
+        $_POST['CHDRNo'] = 0;
+    }
+
+    if ($_POST['coreGiverPhone'] == ""){
+        $_POST['coreGiverPhone'] = 0;
+    }
+
+    if ($_POST['childWeight'] == ""){
+        $_POST['childWeight'] = 0;
+    }
+
+    if ($_POST['childHeight'] == ""){
+        $_POST['childHeight'] = 0;
+    }
+
+    if ($_POST['childLength'] == ""){
+        $_POST['childLength'] = 0;
+    }
+
+    if ($_POST['eligibleFamilyNo'] == ""){
+        $_POST['eligibleFamilyNo'] = 0;
+    }
+
+
     try{
         $dateOfBirth = $_POST['dateOfBirth'];
 

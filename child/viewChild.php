@@ -101,7 +101,8 @@
         </tr><tr><td><br></td></tr>
     </table>
 
-    <input type="submit" value="close" onclick="closeBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
+    <input type="submit" value="Close" onclick="closeBtn_OnClick();" class="btn btn-danger">&nbsp;&nbsp;
+    <input type="submit" value="Edit" onclick="editBtn_OnClick();" class="btn btn-primary">&nbsp;&nbsp;
     <!-- <input type="submit" value="Save" onclick="saveBtn_OnClick();" class="btn btn-primary"> -->
 
     </form>
@@ -122,8 +123,8 @@
 </script>
 
 <script>
-    function saveBtn_OnClick(){
-        document.getElementById("form").submit();
+    function editBtn_OnClick(){
+        location.replace('editChild.php?id=<?php echo $_GET['id']; ?>');
     }
 
     function closeBtn_OnClick(){
