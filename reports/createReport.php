@@ -11,6 +11,11 @@
     <script src="../sessions/calculateStage_v2.js"></script>
 </head>
 <body>
+
+<div id="printCtrlSection" style="top:20px; right:0px; position:absolute; background-color:green; padding-left:20px; padding-right:40px; padding-top:10px; padding-bottom:10px; border-top-left-radius:10px; border-bottom-left-radius:10px;">
+<button id="printBtn" onclick="printBtn_onClick();">Print report</button>
+</div>
+
 <div style="padding:11px; margin:10px; border:2px solid black;" id="reportContent">
 
 <center>
@@ -225,6 +230,18 @@
 <p>Total count of childs : <?php echo $count; ?></p>
 
 </div>
+
+<script>
+  function printBtn_onClick(){
+    document.getElementById("printCtrlSection").style.display = "none";
+    setTimeout(startPrinting, 1000);
+  }
+
+  async function startPrinting(){
+    window.print();
+    document.getElementById("printCtrlSection").style.display = "block";
+  }
+</script>
 
 </body>
 </html>

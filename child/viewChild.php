@@ -27,6 +27,15 @@
             die('<div class="alert alert-danger" role="alert">Sorry, no child found for this given id.</div>');
         }
 
+
+        if(isset($_GET['alert'])){
+            if($_GET['alert'] == "success"){
+              echo '<div class="alert alert-success" role="alert">The child details was updated successfully.</div>';
+            }elseif($_GET['alert'] == "unsuccess"){
+              echo '<div class="alert alert-danger" role="alert">Sorry, failed to update the child details right now..</div>';
+            }
+        }
+
     ?>
 
     <table>
