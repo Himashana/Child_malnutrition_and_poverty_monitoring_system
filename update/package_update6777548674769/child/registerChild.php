@@ -14,7 +14,7 @@
     }
 
     if ($_POST['CHDRNo'] == ""){
-        $_POST['CHDRNo'] = "0";
+        $_POST['CHDRNo'] = 0;
     }
 
     if ($_POST['coreGiverPhone'] == ""){

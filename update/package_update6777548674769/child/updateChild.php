@@ -1,6 +1,6 @@
 <?php
     include('../site.Master.php'); // Including the site master page.
-    createProperties($filePathPrefix = "../", $pageTitle = "Child Registration");
+    createProperties($filePathPrefix = "../", $pageTitle = "Edit child");
     checkLoginStatus();
 
     include('./Child.php');
@@ -14,7 +14,7 @@
     }
 
     if ($_POST['CHDRNo'] == ""){
-        $_POST['CHDRNo'] = "0";
+        $_POST['CHDRNo'] = 0;
     }
 
     if ($_POST['coreGiverPhone'] == ""){
@@ -41,14 +41,14 @@
     try{
         $dateOfBirth = $_POST['dateOfBirth'];
 
-        $result = $child->addChild($_POST['CHDRNo'], $_POST['firstName'], $_POST['lastName'], $_POST['coreGiverName'], $_POST['coreGiverNIC'], $_POST['coreGiverPhone'], $_POST['childAddress'], $dateOfBirth, $_POST['childGender'], $_POST['childWeight'], $_POST['childHeight'], $_POST['childLength'], $isAnyDisease, $_POST['eligibleFamilyNo'], $_POST['childEthinticity']);
+        $result = $child->updateChild($_POST['childId'], $_POST['CHDRNo'], $_POST['firstName'], $_POST['lastName'], $_POST['coreGiverName'], $_POST['coreGiverNIC'], $_POST['coreGiverPhone'], $_POST['childAddress'], $dateOfBirth, $_POST['childGender'], $_POST['childWeight'], $_POST['childHeight'], $_POST['childLength'], $isAnyDisease, $_POST['eligibleFamilyNo'], $_POST['childEthinticity']);
 
         if($result){
-            header("Location:viewChilds.php?alert=success");
+            header("Location:viewChild.php?id=" . $_POST['childId'] . "&alert=success");
         }else{
-            header("Location:viewChilds.php?alert=unsuccess");
+            header("Location:viewChild.php?id=" . $_POST['childId'] . "&alert=unsuccess");
         }
     } catch(Exception $e) {
-        header("Location:viewChilds.php?alert=unsuccess");
+        header("Location:viewChild.php?id=" . $_POST['childId'] . "&alert=unsuccess");
     }
 ?>

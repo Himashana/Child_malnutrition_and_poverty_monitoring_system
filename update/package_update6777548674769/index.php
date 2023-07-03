@@ -137,7 +137,7 @@
 
 <script>
     $("#fromDate1").datepicker({
-        dateFormat: "mm/yy",
+        dateFormat: "dd/mm/yy",
         inline: true,
         showAnim: 'fadeIn',
         changeMonth: true,

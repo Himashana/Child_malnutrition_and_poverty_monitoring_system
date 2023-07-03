@@ -194,25 +194,23 @@
               ?>        
             </td>
             <td scope="row"><?php
-              if(!empty($sessions)){
-                if($sessions[0][8] == "yes"){
-                  echo "Poor income and poverly, ";
-                }
-                if($sessions[0][9] == "yes"){
-                  echo "Insufficient to child care, ";
-                }
-                if($sessions[0][10] == "yes"){
-                  echo "Poor child feeding practices, ";
-                }
-                if($sessions[0][11] == "yes"){
-                  echo "Low food security, ";
-                }
-                if($sessions[0][12] == "yes"){
-                  echo "Poor nutrition knowledge, ";
-                }
-                if($sessions[0][13] == "yes"){
-                  echo "Lack of access water and sanitation, ";
-                }
+              if($sessions[0][8] == "yes"){
+                echo "Poor income and poverly, ";
+              }
+              if($sessions[0][9] == "yes"){
+                echo "Insufficient to child care, ";
+              }
+              if($sessions[0][10] == "yes"){
+                echo "Poor child feeding practices, ";
+              }
+              if($sessions[0][11] == "yes"){
+                echo "Low food security, ";
+              }
+              if($sessions[0][12] == "yes"){
+                echo "Poor nutrition knowledge, ";
+              }
+              if($sessions[0][13] == "yes"){
+                echo "Lack of access water and sanitation, ";
               }
             ?></td>
             <td scope="row">

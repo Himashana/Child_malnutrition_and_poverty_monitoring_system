@@ -6,7 +6,7 @@
             $dbconnection = new DBconnect();
             $dbconnection->MakeConn();
             
-            $query = 'INSERT INTO Child(CHDRNo, firstname, lastname, coreGiverName, coreGiverNIC, coreGiverPhone, address, dateofBirth, gender, weight, height, length, isAnyDeseaseOrCompilation, familynumber, ethinticity, registrationDate) VALUES ("' . $CHDRNo . '", "' . $firstName . '", "' . $lastName . '", "' . $coreGiverName . '", "' . $coreGiverNIC . '", ' . $coreGiverPhone . ', "' . $childAddress . '", "' . $dateOfBirth . '", "' . $childGender . '", ' . $childWeight . ', ' . $childHeight . ', ' . $childLength . ', "' . $isAnyDisease . '", ' . $eligibleFamilyNo . ', "' . $childEthinticity . '", "' . date('d/m/Y') . '")';
+            $query = 'INSERT INTO Child(CHDRNo, firstname, lastname, coreGiverName, coreGiverNIC, coreGiverPhone, address, dateofBirth, gender, weight, height, length, isAnyDeseaseOrCompilation, familynumber, ethinticity, registrationDate) VALUES (' . $CHDRNo . ', "' . $firstName . '", "' . $lastName . '", "' . $coreGiverName . '", "' . $coreGiverNIC . '", ' . $coreGiverPhone . ', "' . $childAddress . '", "' . $dateOfBirth . '", "' . $childGender . '", ' . $childWeight . ', ' . $childHeight . ', ' . $childLength . ', "' . $isAnyDisease . '", ' . $eligibleFamilyNo . ', "' . $childEthinticity . '", "' . date('d/m/Y') . '")';
 
             $results = $dbconnection->ExecuteQuery($query);
 
@@ -25,7 +25,7 @@
             $dbconnection = new DBconnect();
             $dbconnection->MakeConn();
             
-            $query = 'UPDATE Child SET CHDRNo="' . $CHDRNo .'", firstname="' . $firstName . '", lastname="' . $lastName . '", coreGiverName="' . $coreGiverName . '", coreGiverNIC="' . $coreGiverNIC . '", coreGiverPhone=' . $coreGiverPhone . ', address="' . $childAddress . '", dateofBirth="' . $dateOfBirth . '", gender="' . $childGender . '", weight=' . $childWeight . ', height=' . $childHeight . ', length=' . $childLength . ', isAnyDeseaseOrCompilation="' . $isAnyDisease . '", familynumber=' . $eligibleFamilyNo . ', ethinticity="' . $childEthinticity . '" WHERE childId=' . $childId;
+            $query = 'UPDATE Child SET CHDRNo=' . $CHDRNo .', firstname="' . $firstName . '", lastname="' . $lastName . '", coreGiverName="' . $coreGiverName . '", coreGiverNIC="' . $coreGiverNIC . '", coreGiverPhone=' . $coreGiverPhone . ', address="' . $childAddress . '", dateofBirth="' . $dateOfBirth . '", gender="' . $childGender . '", weight=' . $childWeight . ', height=' . $childHeight . ', length=' . $childLength . ', isAnyDeseaseOrCompilation="' . $isAnyDisease . '", familynumber=' . $eligibleFamilyNo . ', ethinticity="' . $childEthinticity . '" WHERE childId=' . $childId;
 
             $results = $dbconnection->ExecuteQuery($query);
 
