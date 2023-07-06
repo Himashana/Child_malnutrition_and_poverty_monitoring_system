@@ -30,23 +30,24 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-inline">
-            From : <input type="text" name="fromDate1" id="fromDate1" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off">
-            &nbsp;to : <input type="text" name="toDate1" id="toDate1" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off">
+            Date : <input type="text" name="fromDate1" id="fromDate1" placeholder="mm/yyyy" style="width:100px;" class="form-control" autocomplete="off"><p style="display:none;"></p>
+            <!-- &nbsp;&nbsp;&nbsp;to : <input type="text" name="toDate1" id="toDate1" placeholder="mm/yyyy" style="width:100px;" class="form-control" autocomplete="off"> -->
             </div>
+            <center><b><h4>Malnutrition percentage</h4></b></center>
             <div id="piechart1"><div style="background-color:#A6A6A6; color:white; border-radius:6px; padding:10px; width:150px;">Loading the chart...</div></div>
         </div>
         <div class="col-md-6">
         <div class="form-inline">
-            From : <input type="text" name="fromDate2" id="fromDate2" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off">
-            &nbsp;to : <input type="text" name="toDate2" id="toDate2" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off">
-        </div>    
+            Date : <input type="text" name="fromDate2" id="fromDate2" placeholder="mm/yyyy" style="width:100px;" class="form-control" autocomplete="off"><p style="display:none;"></p>
+            <!-- &nbsp;to : <input type="text" name="toDate2" id="toDate2" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off"> -->
+        </div><b><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Malnutrition stage by gender</h4></b>
         <div id="columnChart"><div style="background-color:#A6A6A6; color:white; border-radius:6px; padding:10px; width:150px;">Loading the chart...</div></div></div>
     </div>
     <div class="col-md-6">
     <div class="form-inline">
-        From : <input type="text" name="fromDate3" id="fromDate3" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off">
-        &nbsp;to : <input type="text" name="toDate3" id="toDate3" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off">
-    </div>    
+        Date : <input type="text" name="fromDate3" id="fromDate3" placeholder="mm/yyyy" style="width:100px;" class="form-control" autocomplete="off"><p style="display:none;"></p>
+        <!-- &nbsp;to : <input type="text" name="toDate3" id="toDate3" placeholder="dd/mm/yyyy" style="width:100px;" class="form-control" autocomplete="off"> -->
+    </div><center><b><h4>Risk assessment</h4></b></center>    
     <div id="piechart2"><br><br><div style="background-color:#A6A6A6; color:white; border-radius:6px; padding:10px; width:150px;">Loading the chart...</div></div></div>
 </div>
 
@@ -135,54 +136,41 @@
     }
 </script>
 
+<script src="./jquery-ui-month-picker/monthpicker.js"></script>
+
 <script>
-    $("#fromDate1").datepicker({
-        dateFormat: "mm/yy",
-        inline: true,
-        showAnim: 'fadeIn',
-        changeMonth: true,
-        changeYear: true
+    $("#fromDate1").monthpicker({
+        dateFormat: "M/yy"
+        
     });
 
-    $("#toDate1").datepicker({
-        dateFormat: "dd/mm/yy",
-        inline: true,
-        showAnim: 'fadeIn',
-        changeMonth: true,
-        changeYear: true
+    // $("#toDate1").monthpicker({
+    //     dateFormat: "mm/yy"
+    // });
+
+    $("#fromDate2").monthpicker({
+        dateFormat: "M/yy"
     });
 
-    $("#fromDate2").datepicker({
-        dateFormat: "dd/mm/yy",
-        inline: true,
-        showAnim: 'fadeIn',
-        changeMonth: true,
-        changeYear: true
+    // $("#toDate2").datepicker({
+    //     dateFormat: "dd/mm/yy",
+    //     inline: true,
+    //     showAnim: 'fadeIn',
+    //     changeMonth: true,
+    //     changeYear: true
+    // });
+
+    $("#fromDate3").monthpicker({
+        dateFormat: "M/yy"
     });
 
-    $("#toDate2").datepicker({
-        dateFormat: "dd/mm/yy",
-        inline: true,
-        showAnim: 'fadeIn',
-        changeMonth: true,
-        changeYear: true
-    });
-
-    $("#fromDate3").datepicker({
-        dateFormat: "dd/mm/yy",
-        inline: true,
-        showAnim: 'fadeIn',
-        changeMonth: true,
-        changeYear: true
-    });
-
-    $("#toDate3").datepicker({
-        dateFormat: "dd/mm/yy",
-        inline: true,
-        showAnim: 'fadeIn',
-        changeMonth: true,
-        changeYear: true
-    });
+    // $("#toDate3").datepicker({
+    //     dateFormat: "dd/mm/yy",
+    //     inline: true,
+    //     showAnim: 'fadeIn',
+    //     changeMonth: true,
+    //     changeYear: true
+    // });
 </script>
 
 <?php closePage(); ?>

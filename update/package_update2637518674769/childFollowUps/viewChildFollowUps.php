@@ -98,6 +98,7 @@
              ?></td>
             <td>
               <div class="form-inline">
+                <a href="../sessions/viewSessions.php?id=<?php echo $c[0]; ?>&back=viewChildFollowUps"><button class="btn btn-primary">View sessions</button></a>
                 <a href="../sessions/newSession.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">Start session</button></a>
               </div>
             </td>
@@ -144,6 +145,7 @@
              ?></td>
             <td>
               <div class="form-inline">
+                <a href="../sessions/viewSessions.php?id=<?php echo $c[0]; ?>&back=viewChildFollowUps"><button class="btn btn-primary">View sessions</button></a>
                 <a href="../sessions/newSession.php?id=<?php echo $c[0]; ?>"><button class="btn btn-primary">Start session</button></a>
               </div>
             </td>

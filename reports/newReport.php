@@ -15,7 +15,7 @@
         <tr>
             <td>Report type:&nbsp;</td>
             <td>
-                <select type="text" name="reportType" id="reportType" class="form-control">
+                <select type="text" name="reportType" id="reportType" onchange="updateReportSettings();" class="form-control">
                     <option value="Child registration report">Child registration report</option>
                     <option value="Child malnutrition stage report">Child malnutrition stage report</option>
                 </select>
@@ -28,9 +28,9 @@
         <tr>
             <td>Date to:&nbsp;</td>
             <td><input type="text" name="toDate" id="toDate" placeholder="dd/mm/yyyy" class="form-control" autocomplete="off"></td>
-        </tr><tr><td><br></td></tr>
+        </tr><tr id="selectStageSectionSpacer"><td><br></td></tr>
 
-        <tr>
+        <tr id="selectStageSection">
             <td>Child malnutrition stages:&nbsp;</td>
             <td>
                 <select type="text" name="malnutritionStages" id="malnutritionStages" class="form-control">
@@ -45,8 +45,8 @@
             <td>Gender:&nbsp;</td>
             <td>
                 <select type="text" name="childGender" id="childGender" class="form-control">
-                    <option value="SAM">MALE</option>
-                    <option value="MAM">FEMALE</option>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
                 </select>
             </td>
         </tr><tr><td><br></td></tr>
@@ -88,6 +88,16 @@
 
     function cancelBtn_OnClick(){
         location.replace('../index.php');
+    }
+
+    function updateReportSettings(){
+        if(document.getElementById("reportType").value == "Child registration report"){
+            document.getElementById("selectStageSection").hidden = true;
+            document.getElementById("selectStageSectionSpacer").hidden = true;
+        }else{
+            document.getElementById("selectStageSection").hidden = false;
+            document.getElementById("selectStageSectionSpacer").hidden = false;
+        }
     }
 </script>
 

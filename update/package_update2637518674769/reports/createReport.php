@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +65,7 @@
 
     if(!empty($childs)){
       foreach ($childs as $c){
+        if(strtolower($c[9]) == strtolower($_POST['childGender'])){
         if(date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) >= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['fromDate']))) && date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) <= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['toDate'])))){
             $count += 1;
         ?>
@@ -95,6 +98,7 @@
           </tr>
         <?php
         }
+        }
       }
     }else{
         echo "No details found.";
@@ -107,6 +111,8 @@
 <?php } ?>
 
 <?php if ($_POST['reportType'] == "Child malnutrition stage report"){ ?>
+
+<p id="stage"></p>
 
 <table class="table" border="1">
       <thead class="thead-light">
@@ -143,6 +149,9 @@
 
     if(!empty($childs)){
       foreach ($childs as $c){
+
+        // if(strtolower($c[9]) == strtolower($_POST['childGender'])){
+        if(strtolower($c[9]) == strtolower($_POST['childGender'])){
         if(date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) >= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['fromDate']))) && date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) <= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['toDate'])))){
             $count += 1;
         ?>
@@ -194,23 +203,25 @@
               ?>        
             </td>
             <td scope="row"><?php
-              if($sessions[0][8] == "yes"){
-                echo "Poor income and poverly, ";
-              }
-              if($sessions[0][9] == "yes"){
-                echo "Insufficient to child care, ";
-              }
-              if($sessions[0][10] == "yes"){
-                echo "Poor child feeding practices, ";
-              }
-              if($sessions[0][11] == "yes"){
-                echo "Low food security, ";
-              }
-              if($sessions[0][12] == "yes"){
-                echo "Poor nutrition knowledge, ";
-              }
-              if($sessions[0][13] == "yes"){
-                echo "Lack of access water and sanitation, ";
+              if(!empty($sessions)){
+                if($sessions[0][8] == "yes"){
+                  echo "Poor income and poverly, ";
+                }
+                if($sessions[0][9] == "yes"){
+                  echo "Insufficient to child care, ";
+                }
+                if($sessions[0][10] == "yes"){
+                  echo "Poor child feeding practices, ";
+                }
+                if($sessions[0][11] == "yes"){
+                  echo "Low food security, ";
+                }
+                if($sessions[0][12] == "yes"){
+                  echo "Poor nutrition knowledge, ";
+                }
+                if($sessions[0][13] == "yes"){
+                  echo "Lack of access water and sanitation, ";
+                }
               }
             ?></td>
             <td scope="row">
@@ -237,6 +248,8 @@
           </tr>
         <?php
         }
+        }
+        // }
       }
     }else{
         echo "No details found.";

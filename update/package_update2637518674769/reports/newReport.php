@@ -45,8 +45,8 @@
             <td>Gender:&nbsp;</td>
             <td>
                 <select type="text" name="childGender" id="childGender" class="form-control">
-                    <option value="SAM">MALE</option>
-                    <option value="MAM">FEMALE</option>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
                 </select>
             </td>
         </tr><tr><td><br></td></tr>

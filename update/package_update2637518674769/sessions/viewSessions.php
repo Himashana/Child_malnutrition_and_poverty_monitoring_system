@@ -27,7 +27,11 @@
 
 <script src="./calculateStage_v2.js"></script>
 
-<a href="index.php"><button class="btn btn-primary">< Go back</button></a><hr>
+<?php if(isset($_GET['back']) && $_GET['back'] == "viewChildFollowUps"){ ?>
+  <a href="../childFollowUps/viewChildFollowUps.php"><button class="btn btn-primary">< Go back</button></a><hr>
+<?php }else{ ?>
+  <a href="index.php"><button class="btn btn-primary">< Go back</button></a><hr>
+<?php } ?>
 
 <h4>Child registration No: 00<?php echo $_GET['id']; ?>/Child/M/PK</h4>
 <div class="panel panel-default">

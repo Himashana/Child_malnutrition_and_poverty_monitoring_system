@@ -27,7 +27,7 @@
     <center>
     <form action="login.php" id="form" method="POST" style="overflow-y:auto; height:90vh" onsubmit="event.preventDefault();">
         <div class="loginBox">
-            <b><h2>Child malnutrition & poverty monitoring system</h2></b>
+            <b><h2>Child Malnutrition & Poverty Monitoring System</h2></b>
             <h3>MALNUTRITION TRACKER</H3><br>
 
             <h4>Sign in to your account</h4><br>
@@ -51,7 +51,7 @@
                 <tr>
                     <td>Password:&nbsp;</td>
                     <td>
-                        <input type="text" name="password" id="password" placeholder="Enter your password" class="form-control">
+                        <input type="password" name="password" id="password" placeholder="Enter your password" class="form-control">
                         <p style="color:red; display:none;" id="passwordErrorMsg">Please enter the password</p>
                     </td>
                 </tr><tr><td><br></td></tr>
