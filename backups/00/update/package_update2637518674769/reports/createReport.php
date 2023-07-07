@@ -11,11 +11,8 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
     <script src="../sessions/calculateStage_v2.js"></script>
-
-    <!-- Jquery js -->
-    <script src="../jquery/jquery-3.6.4.min.js"></script>
 </head>
-<body onload="onloadEvents();">
+<body>
 
 <div id="printCtrlSection" style="top:20px; right:0px; position:absolute; background-color:green; padding-left:20px; padding-right:40px; padding-top:10px; padding-bottom:10px; border-top-left-radius:10px; border-bottom-left-radius:10px;">
 <button id="printBtn" onclick="printBtn_onClick();">Print report</button>
@@ -117,8 +114,6 @@
 
 <p id="stage"></p>
 
-<input id="filterStageInput" type="text" value="<?php echo $_POST['malnutritionStages'] ?>" style="display:none;">
-
 <table class="table" border="1">
       <thead class="thead-light">
         <tr>
@@ -152,49 +147,10 @@
 
     $count = 0;
 
-    $path = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    $path = str_replace("reports/createReport.php", "", $path);
-
     if(!empty($childs)){
       foreach ($childs as $c){
 
-        $sessions = $session->getChildSessions($c[0]);
-            
-        if(!empty($sessions)){
-          if($sessions[0][6] >= 5.0 && $sessions[0][6] <= 11.5){
-            $stage = "SAM";
-          }else if($sessions[0][6] >= 11.6 && $sessions[0][6] <= 12.5){
-            $stage = "MAM";
-          }else if($sessions[0][6] >= 12.6 && $sessions[0][6] <= 19.9){
-            $stage = "NORMAL";
-          }else{
-            if($sessions[0][6] == 0){
-              
-              $url = $path . "sessions/getStage.php?dateOfBirth=" . $c[8] . "&childGender=" . $c[9] . "&childLength=" . $sessions[0][5] . "&childWeight=" . $sessions[0][3] . "&childHeight=" . $sessions[0][4];
-              
-              $stage = file_get_contents($url);
-              
-            }else{
-              $stage = "N/A";
-            }
-          }
-        }else{
-          $stage = "N/A";
-        }
-
-        // echo $stage . "<br>";
-        // echo $stage . " == " . strtoupper($_POST['malnutritionStages']) . "<br>";
-
-        $stage = str_replace(' ', '-', $stage);
-        // $stage = preg_replace('/[^A-Za-z0-9\-\;\,\?\*\%\@\$\!\(\)\#\=\&]/', '', $stage);
-        $stage = strip_tags($stage);
-        echo $stage . " == " . strtoupper($_POST['malnutritionStages']) . " : " . strcmp($stage . "  ",strtoupper($_POST['malnutritionStages'])) . "<br>";
-
-        if($stage == strtoupper($_POST['malnutritionStages'])){
-          echo "True<br>";
-        }
-
-        if($stage == strtoupper($_POST['malnutritionStages'])){
+        // if(strtolower($c[9]) == strtolower($_POST['childGender'])){
         if(strtolower($c[9]) == strtolower($_POST['childGender'])){
         if(date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) >= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['fromDate']))) && date('d/m/Y', strtotime(str_replace('/', '-', $c[16]))) <= date('d/m/Y', strtotime(str_replace('/', '-', $_POST['toDate'])))){
             $count += 1;
@@ -293,7 +249,7 @@
         <?php
         }
         }
-        }
+        // }
       }
     }else{
         echo "No details found.";
@@ -319,23 +275,6 @@
     window.print();
     document.getElementById("printCtrlSection").style.display = "block";
   }
-</script>
-
-<script>
-  $(document).ready(function(){
-    $("#filterStageInput").on("keydown", function() {
-      var value = $(this).val().toLowerCase();
-      $("#table tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-    
-  });
-
-  function onloadEvents(){
-    // document.getElementById("filterStageInput").dispatchEvent(new KeyboardEvent('keydown', {'keyCode': 13}));
-  }
-  
 </script>
 
 </body>
